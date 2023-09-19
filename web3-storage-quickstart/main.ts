@@ -7,6 +7,8 @@ dotenv.config()
 
 let token = process.env.WEB3_API_KEY
 
+console.log({token})
+
 async function main () {
   const args = minimist(process.argv.slice(2))
   token = token ?? args.token
@@ -32,4 +34,5 @@ async function main () {
   console.log('Content added with CID:', cid)
 }
 
+console.log("starting file upload")
 main()

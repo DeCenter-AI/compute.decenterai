@@ -1,10 +1,13 @@
 {
   "ts-node": {
     "esm": true,
-    "experimentalSpecifierResolution": "node"
+    "experimentalSpecifierResolution": "node",
+    "moduleResolution": "Node",
   },
   "compilerOptions": {
     "module": "commonjs",
+    "moduleResolution": "Node",
+
     "esModuleInterop": true,
     "declaration": true,
     "removeComments": true,
