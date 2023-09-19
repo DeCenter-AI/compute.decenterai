@@ -1,0 +1,115 @@
+# https://python-poetry.org/docs/pyproject/
+[tool.poetry]
+name = "decenter-ai.streamlit.app"
+version = "3.0.0"
+description = "Official Decenter Compute"
+authors = ["Nasfame <laciferin@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+homepage = "https://compute.decenter-ai"
+repository = "https://github.com/Decenter-AI/compute.decenter-ai"
+documentation = "https://github.com/Decenter-AI/compute.decenter-ai"
+keywords = ["ai", "decenter", "ai-infra","ml-compute"]
+
+
+packages = []
+
+classifiers = [
+  "Topic :: Software Development :: Build Tools",
+  "Programming Language :: Python :: 3.x",
+
+  "Development Status :: 4 - Beta",
+  "Environment :: Web Environment",
+  "Framework :: Streamlit",
+  "Intended Audience :: Developers",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: Your License Here",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+  "Topic :: Internet :: WWW/HTTP",
+  "Topic :: Software Development :: Libraries :: Application Frameworks",
+  "Topic :: System :: Distributed Computing",
+  "Topic :: System :: Networking",
+]
+
+
+[tool.poetry.dependencies]
+python = "^3.10"
+clarifai = "^9.8.1"
+clarifai-grpc = "^9.8.2"
+colorama = "^0.4.6"
+colored = "^2.2.3"
+gtts = ">=2.3.2,<2.4.0"
+icecream = "^2.1.3"
+joblib = "^1.3.2"
+langchain = "^0.0.289"
+
+openai = "^0.28.0"
+pinecone-client = "^2.2.2"
+pytest = ">=7.4.0,<7.5.0"
+python-dotenv = "1.0.0"
+
+[tool.poetry.group.dev.dependencies]
+flake8 = "^6.1.0"
+pytest-benchmark = "^4.0.0"
+flake8-in-file-ignores = "^0.2.2"
+pre-commit = "^3.4.0"
+
+[tool.poetry.group.ml.dependencies]
+numpy = "^1.25.2"
+pandas = "^2.1.0"
+requests = ">=2.31.0,<2.32.0"
+scikit-learn = "^1.3.0"
+jupyter = "^1.0.0"
+matplotlib = "^3.8.0"
+ipykernel = "^6.25.2"
+beautifulsoup4 = "^4.12.2"
+seaborn = "^0.12.2"
+spacy = "^3.6.1"
+
+[build-system]
+# requires = ["python>=3.10", "setuptools", "wheel"]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+
+
+[tool.poetry.extras]
+dev = ['pytest']
+ml = [
+  "numpy",
+  "pandas",
+  "scikit-learn",
+  "matplotlib",
+  "seaborn",
+  "tensorflow",
+  "keras",
+  "pytorch",
+  "spacy",
+]
+
+# A list of all of the optional dependencies, some of which are included in the
+# poetry install --extras
+# poetry install --all-extras
+
+[tool.poetry.urls]
+"Bug Tracker" = "https://github.com/Decenter-AI/compute.decenter-ai/issues"
+
+[tool.black]
+line-length = 79
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
