@@ -32,6 +32,11 @@ async function main () {
   console.log(`Uploading ${files.length} files`)
   const cid = await storage.put(files)
   console.log('Content added with CID:', cid)
+  const u = `https://dweb.link/ipfs/${cid}`
+  console.log(`open browser: ${u}`)
+  const res = await fetch(u)
+  console.table({res, status: res.status, statusText: res.statusText})
+
 }
 
 console.log("starting file upload")
