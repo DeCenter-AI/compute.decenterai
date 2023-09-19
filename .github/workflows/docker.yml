@@ -1,0 +1,33 @@
+name: Docker
+
+on:
+  push:
+    # branches: ["main"]
+  pull_request:
+    # branches: ["main"]
+
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  mode: testing
+  
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Build Dockerfile
+        run: |
+          docker build .
+
+    # - name: Run tests
+    #   run: |
+    #     make test
