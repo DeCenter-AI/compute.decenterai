@@ -14,5 +14,8 @@
     "web3.storage": "^3.1.0"
   },
   "author": "Hiro <laciferin@gmail.com>",
-  "license": "(Apache-2.0 AND MIT)"
+  "license": "(Apache-2.0 AND MIT)",
+  "devDependencies": {
+    "ts-node": "^10.9.1"
+  }
 }
