@@ -1,4 +1,4 @@
-import sys
+import sys, subprocess, logging, concurrent
 
 def get_notebook_cmd(starter_script: str, python_repl=sys.executable):
     # It will save executed notebook to your-notebook.nbconvert.ipynb file. You can specify the custom output name and custom output director
@@ -22,3 +22,48 @@ def get_notebook_cmd(starter_script: str, python_repl=sys.executable):
 def get_python_cmd(starter_script, python_interpreter=sys.executable):
     command = [python_interpreter, starter_script]
     return command
+
+
+def install_deps(python_repl=sys.executable, requirements: list = None, cwd=None):
+    if not requirements:
+        return
+
+    print('install_deps', requirements)
+
+    def install(package):
+        subprocess.check_call(
+            [python_repl, '-m', 'pip', 'install', package],
+            # stdout=st.info,
+            # stderr=st.error,
+            universal_newlines=True,
+        )
+
+    # Use a ThreadPoolExecutor to install the packages in parallel
+    with concurrent.futures.ThreadPoolExecutor() as executor:
+        executor.map(install, requirements)
+
+def install_dependencies(
+    python_repl=sys.executable, requirements_path=None, requirements=None, cwd=None,
+):
+    if requirements:
+        logging.info('install_dependencies:')
+        install_deps(python_repl, requirements, cwd)
+
+    if not requirements_path:
+        logging.warning('install_dependencies:requirements_path not found')
+        return
+
+    print('installing dependencies:  for ', python_repl)
+    command = [python_repl, '-m', 'pip', 'install', '-r', requirements_path]
+    result = subprocess.run(
+        command,
+        cwd=cwd,
+        capture_output=True,
+        encoding='UTF-8',
+    )
+
+    logging.info(result.stdout)
+    logging.error(result.stderr)
+
+
+    return result
