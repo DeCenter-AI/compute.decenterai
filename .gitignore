@@ -68,3 +68,5 @@ You can modify this file as per your specific requirements.
 *.zip
 
 *.html
+
+node_modules/
