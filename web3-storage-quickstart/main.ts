@@ -14,7 +14,7 @@ async function main () {
   token = token ?? args.token
 
   if (!token) {
-    return console.error('A token is needed. You can create one on https://web3.storage')
+    return console.error('A token is needed. You can create one on https://web3.storage/tokens')
   }
 
   if (args._.length < 1) {
