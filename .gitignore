@@ -70,3 +70,5 @@ You can modify this file as per your specific requirements.
 *.html
 
 node_modules/
+
+*.bin
