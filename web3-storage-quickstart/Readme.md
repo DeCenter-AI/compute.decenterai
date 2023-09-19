@@ -20,3 +20,14 @@ Replace `main.ts` with any file or files supports multiple files
 ```shell
 npm run start main.ts package.json .prettierrc
 ```
+
+### [Nft Storage](https://nft.storage/files/)
+
+- upto 31 GB 
+- create key- <https://nft.storage/new-key/>
+
+```shell
+
+ts-node upload-nft image.png 'A name for my token' 'A longer description for the token...'
+
+```

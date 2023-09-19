@@ -5,7 +5,9 @@
   "description": "Get started using web3.storage in Node.js",
   "scripts": {
     "test": "ts-node main.ts main.ts",
-    "start": "ts-node main.ts"
+    "start": "ts-node main.ts",
+    "upload-nft":"ts-node upload-nft",
+    "test-upload-nft": "ts-node upload-nft image.png 'A name for my token' 'A longer description for the token...'"
   },
   "dependencies": {
     "dotenv": "^16.3.1",
