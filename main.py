@@ -93,6 +93,9 @@ def train_v2(train_script: str, requirements_txt: str = None, input_archive='dec
         )
         logging.info("archived working directory", zipfile_)
 
+    temp_dir.cleanup()
+    logging.debug("cleanup the temp dir")
+
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
