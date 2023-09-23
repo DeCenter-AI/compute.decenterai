@@ -1,3 +1,4 @@
+import datetime
 import os.path
 import tempfile
 import zipfile
@@ -66,6 +67,8 @@ def train(train_script: str, requirements_txt: str = None, data_dir='/data'):
 
 
 def train_v2(train_script: str, requirements_txt: str = None, input_archive='decenter-model.zip'):
+    logging.info(f"start {datetime.datetime.utcnow()}")
+
     temp_dir = tempfile.TemporaryDirectory(prefix="decenter-ai-",
                                            suffix="-training-working-dir", )
     data_dir = temp_dir.name
@@ -81,7 +84,8 @@ def train_v2(train_script: str, requirements_txt: str = None, input_archive='dec
 
     result = train(train_script, requirements_txt, data_dir)
 
-    output_archive = os.path.splitext(input_archive)[0]
+    output_archive = os.path.basename(input_archive)
+    output_archive = os.path.splitext(output_archive)[0]
 
     if "decenter" not in output_archive:
         output_archive = "decenter-ai-" + output_archive
@@ -95,6 +99,7 @@ def train_v2(train_script: str, requirements_txt: str = None, input_archive='dec
 
     temp_dir.cleanup()
     logging.debug("cleanup the temp dir")
+    logging.info(f"end {datetime.datetime.utcnow()}")
 
 
 if __name__ == "__main__":
