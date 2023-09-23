@@ -33,7 +33,7 @@ EXPOSE 8501
 
 WORKDIR /app
 
-RUN mkdir -p "${data_dir}"
+RUN mkdir -p /data
 
 # Copy dependencies from the builder stage
 COPY --from=builder /usr/local/lib/python3.10/site-packages /usr/local/lib/python3.10/site-packages
