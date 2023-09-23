@@ -19,7 +19,7 @@ def train(train_script: str, requirements_txt: str = None, data_dir='/data'):
     logging.info("starting train")
 
     if not os.path.exists(data_dir):
-        logging.critical(f'data dir-{data_dir} not found')
+        logging.critical(f'data dir {data_dir} not found')
         sys.exit(1)
 
     if requirements_txt:
@@ -95,5 +95,11 @@ def train_v2(train_script: str, requirements_txt: str = None, input_archive='dec
 
 
 if __name__ == "__main__":
-    fire.Fire(train, 'train', 'Train')
-    fire.Fire(train_v2, 'train_v2', 'Train v2')
+    logging.basicConfig(level=logging.INFO)
+
+    # fire.Fire(train, 'train', 'Train')
+    # fire.Fire(train_v2, 'train_v2', 'Train v2')
+    fire.Fire({
+        'train': train,
+        'train_v2': train_v2
+    })
