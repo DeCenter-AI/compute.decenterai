@@ -1,4 +1,8 @@
-import sys, subprocess, logging, concurrent
+import concurrent
+import logging
+import subprocess
+import sys
+
 
 def get_notebook_cmd(starter_script: str, python_repl=sys.executable):
     # It will save executed notebook to your-notebook.nbconvert.ipynb file. You can specify the custom output name and custom output director
@@ -18,6 +22,7 @@ def get_notebook_cmd(starter_script: str, python_repl=sys.executable):
         command = [python_repl, '-m'] + command
 
     return command
+
 
 def get_python_cmd(starter_script, python_interpreter=sys.executable):
     command = [python_interpreter, starter_script]
@@ -42,8 +47,9 @@ def install_deps(python_repl=sys.executable, requirements: list = None, cwd=None
     with concurrent.futures.ThreadPoolExecutor() as executor:
         executor.map(install, requirements)
 
+
 def install_dependencies(
-    python_repl=sys.executable, requirements_path=None, requirements=None, cwd=None,
+        python_repl=sys.executable, requirements_path=None, requirements=None,
 ):
     if requirements:
         logging.info('install_dependencies:')
@@ -57,13 +63,11 @@ def install_dependencies(
     command = [python_repl, '-m', 'pip', 'install', '-r', requirements_path]
     result = subprocess.run(
         command,
-        cwd=cwd,
         capture_output=True,
         encoding='UTF-8',
     )
 
     logging.info(result.stdout)
     logging.error(result.stderr)
-
 
     return result

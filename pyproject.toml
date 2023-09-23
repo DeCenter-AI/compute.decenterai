@@ -48,6 +48,7 @@ openai = "^0.28.0"
 pinecone-client = "^2.2.2"
 pytest = ">=7.4.0,<7.5.0"
 python-dotenv = "1.0.0"
+fire = "^0.5.0"
 
 [tool.poetry.group.dev.dependencies]
 flake8 = "^6.1.0"
