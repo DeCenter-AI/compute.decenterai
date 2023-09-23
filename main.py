@@ -91,7 +91,7 @@ def train_v2(train_script: str, requirements_txt: str = None, input_archive='dec
             os.path.join(os.getcwd(), output_archive),
             data_dir,
         )
-        logging.info("archived working directory", zipfile_)
+        print("archived working directory", zipfile_)
 
     temp_dir.cleanup()
     logging.debug("cleanup the temp dir")
