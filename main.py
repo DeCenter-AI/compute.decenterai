@@ -13,7 +13,7 @@ PYTHON: Final[str] = '.py'
 EXECUTION_FRAMEWORK: str
 
 
-def train(training_script: str, requirements_txt: str = None, data_dir='/data'):
+def train(train_script: str, requirements_txt: str = None, data_dir='/data'):
     if requirements_txt:
         # TODO: implement logic for python
         logging.info("Installing dependencies in progress")
@@ -27,14 +27,14 @@ def train(training_script: str, requirements_txt: str = None, data_dir='/data'):
         )
 
     training_cmd: List[str]
-    script_ext = os.path.splitext(training_script)[1]
+    script_ext = os.path.splitext(train_script)[1]
     match script_ext:
         case ".py":
             EXECUTION_FRAMEWORK = PYTHON
-            training_cmd = [python_repl, training_script]
+            training_cmd = [python_repl, train_script]
         case ".ipynb":
             EXECUTION_FRAMEWORK = JUPYTER_NOTEBOOK
-            cmd_string = f'jupyter nbconvert --execute --to html --output {training_script} {training_script}'
+            cmd_string = f'jupyter nbconvert --execute --to html --output {train_script} {train_script}'
             training_cmd = cmd_string.split(' ')
         case _:
             logging.critical('invalid training script')
