@@ -43,4 +43,4 @@ COPY . .
 
 ENTRYPOINT ["/app/venv/python","main.py","$cmd"]
 
-CMD ["--train_script=linear-regression.ipynb", "-i=samples/sample_v3/sample_v3.zip"]
+CMD ["--train_script=linear-regression.ipynb", "-i=/app/samples/sample_v3/sample_v3.zip"]
