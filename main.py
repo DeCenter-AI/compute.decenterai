@@ -1,5 +1,5 @@
 import os
-from typing import Final, List, Union
+from typing import Final, List
 
 import fire
 
@@ -10,7 +10,7 @@ python_repl = sys.executable
 JUPYTER_NOTEBOOK: Final[str] = '.ipynb'
 PYTHON: Final[str] = '.py'
 
-EXECUTION_FRAMEWORK: Union[JUPYTER_NOTEBOOK, PYTHON]
+EXECUTION_FRAMEWORK: str
 
 
 def train(training_script: str, requirements_txt: str = None, data_dir='/data'):
