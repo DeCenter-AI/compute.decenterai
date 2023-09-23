@@ -30,11 +30,11 @@ jobs:
 
       - name: Build "train_v1"
         run: |
-          docker build  --build-arg cmd=train_v1 -t decenter.compute .
+          docker build  --build-arg cmd=train_v1 -t decenter.compute.v1 .
 
       - name: Build "train_v2"
         run: |
-          docker build  --build-arg cmd=train_v2 -t decenter.compute .
+          docker build  --build-arg cmd=train_v2 -t decenter.compute.v2 .
     
 
     # - name: Run tests
