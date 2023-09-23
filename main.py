@@ -46,7 +46,5 @@ logging.info(result.stderr)
 
 
 
-
-
 if __name__ == "__main__":
     print("start")
