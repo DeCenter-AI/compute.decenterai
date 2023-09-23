@@ -1,7 +1,11 @@
 import concurrent
 import logging
+import os
+import shutil
 import subprocess
 import sys
+
+from icecream import ic
 
 
 def get_notebook_cmd(starter_script: str, python_repl=sys.executable):
@@ -71,3 +75,24 @@ def install_dependencies(
     logging.error(result.stderr)
 
     return result
+
+
+def archive_directory(
+        archive_path_name: str, src_dir: str, base_dir: str = None, format='zip',
+) -> str:
+    # with tempfile.TemporaryDirectory() as temp_dir:
+    #     subprocess.run(command, cwd=temp_dir)
+    print('zipping', os.listdir(src_dir))
+
+    created_archive_loc = shutil.make_archive(
+        archive_path_name,
+        format,
+        src_dir,
+        base_dir,
+        True,
+        logger=logging.getLogger(),
+    )
+
+    ic(created_archive_loc)
+
+    return created_archive_loc

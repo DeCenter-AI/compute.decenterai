@@ -1,4 +1,6 @@
-import os
+import os.path
+import tempfile
+import zipfile
 from typing import Final, List
 
 import fire
@@ -14,8 +16,13 @@ EXECUTION_FRAMEWORK: str
 
 
 def train(train_script: str, requirements_txt: str = None, data_dir='/data'):
+    logging.info("starting train")
+
+    if not os.path.exists(data_dir):
+        logging.critical(f'data dir-{data_dir} not found')
+        sys.exit(1)
+
     if requirements_txt:
-        # TODO: implement logic for python
         logging.info("Installing dependencies in progress")
         requirements_path = os.path.join(
             data_dir,
@@ -38,6 +45,7 @@ def train(train_script: str, requirements_txt: str = None, data_dir='/data'):
             training_cmd = cmd_string.split(' ')
         case _:
             logging.critical('invalid training script')
+            sys.exit(1)
 
     result = subprocess.run(
         training_cmd,
@@ -54,6 +62,38 @@ def train(train_script: str, requirements_txt: str = None, data_dir='/data'):
         f2.write(result.stderr)
         # TODO: pass files directly to subprocess...
 
+    return True
+
+
+def train_v2(train_script: str, requirements_txt: str = None, input_archive='decenter-model.zip'):
+    temp_dir = tempfile.TemporaryDirectory(prefix="decenter-ai-",
+                                           suffix="-training-working-dir", )
+    data_dir = temp_dir.name
+    print("data_dir is ", data_dir)
+
+    with zipfile.ZipFile(input_archive, "r") as zip_ref:
+        zip_ref.extractall(data_dir)
+
+    extracted_files = os.listdir(data_dir)
+    print("extracted:", extracted_files)
+    data_dir_contents = os.listdir(data_dir)
+    print("data_dir contains", data_dir_contents)
+
+    result = train(train_script, requirements_txt, data_dir)
+
+    output_archive = os.path.splitext(input_archive)[0]
+
+    if "decenter" not in output_archive:
+        output_archive = "decenter-ai-" + output_archive
+
+    if result:
+        zipfile_ = archive_directory(
+            os.path.join(data_dir, output_archive),
+            data_dir,
+        )
+        logging.info("archived working directory", zipfile_)
+
 
 if __name__ == "__main__":
-    fire.Fire(train)
+    fire.Fire(train, 'train', 'Train')
+    fire.Fire(train_v2, 'train_v2', 'Train v2')
