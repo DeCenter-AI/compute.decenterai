@@ -34,7 +34,7 @@ classifiers = [
 
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.10,<3.11"
 clarifai = "^9.8.1"
 clarifai-grpc = "^9.8.2"
 colorama = "^0.4.6"
@@ -67,6 +67,8 @@ ipykernel = "^6.25.2"
 beautifulsoup4 = "^4.12.2"
 seaborn = "^0.12.2"
 spacy = "^3.6.1"
+tensorflow = "^2.13.0"
+
 
 [build-system]
 # requires = ["python>=3.10", "setuptools", "wheel"]
