@@ -25,13 +25,15 @@ RUN poetry install --no-root
 # Stage 2: Copy application code and configure Streamlit
 FROM python:3.10-slim
 
+USER 0
+
 ENV mode=production
 
 EXPOSE 8501
 
 WORKDIR /app
 
-RUN mkdir -p $data_dir
+RUN mkdir -p "${data_dir}"
 
 # Copy dependencies from the builder stage
 COPY --from=builder /usr/local/lib/python3.10/site-packages /usr/local/lib/python3.10/site-packages
@@ -41,6 +43,6 @@ RUN . venv/bin/activate
 
 COPY . .
 
-ENTRYPOINT ["venv/python","main.py","$cmd"]
+ENTRYPOINT ["venv/python","main.py","${cmd}"]
 
 CMD ["--train_script=linear-regression.ipynb", "-i=samples/sample_v3/sample_v3.zip"]
