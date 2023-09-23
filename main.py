@@ -88,7 +88,7 @@ def train_v2(train_script: str, requirements_txt: str = None, input_archive='dec
 
     if result:
         zipfile_ = archive_directory(
-            os.path.join(data_dir, output_archive),
+            os.path.join(os.getcwd(), output_archive),
             data_dir,
         )
         logging.info("archived working directory", zipfile_)
