@@ -31,6 +31,8 @@ def path_not_found(path: str):
 def train(train_script: str, requirements_txt: str = None, data_dir=DATA_DIR):
     logging.info("starting train")
 
+    data_dir = os.path.abspath(data_dir)  # jupyter nb convert needs abspath
+
     if path_not_found(data_dir):
         sys.exit(1)
 
@@ -69,6 +71,8 @@ def train(train_script: str, requirements_txt: str = None, data_dir=DATA_DIR):
         case _:
             logging.critical('invalid training script')
             sys.exit(1)
+
+    logging.info(f"train cmd - {training_cmd}")
 
     result = subprocess.run(
         training_cmd,
