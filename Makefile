@@ -13,7 +13,7 @@ clean:
 	docker system prune -f      
 
 gh:
-	git pull && docker build -t app . && docker run app
+	git pull && docker build -t app . && docker run app $@
 
 
 it:
