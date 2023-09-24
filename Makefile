@@ -18,6 +18,7 @@ gh:
 	docker run app
 
 dc:
+	docker-compose down
 	docker-compose up --force-recreate
 
 it:
