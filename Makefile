@@ -7,7 +7,7 @@ docker-build-v1:
 docker-build-v2:
 	docker build  --build-arg cmd=train_v2 -t decenter.ai.v2 .
 
-.PHONY: docker-build docker-build-v1 docker-build-v2 clean gh it run dc
+.PHONY: docker-build docker-build-v1 docker-build-v2 clean gh it run dc test test_docker test_docker1 test_docker2
 
 clean:
 	docker system prune -f      
@@ -48,5 +48,8 @@ test_docker1:
 
 test_docker2:
 	 docker run app '-t=linear-regression1.ipynb' '-i=/app/samples/sample_v3/sample_v3.zip'
+
+test:
+	pytest
 
 # sh start.sh train_v2 --train_script=linear-regression.ipynb -i=samples/sample_v3/sample_v3.zip
