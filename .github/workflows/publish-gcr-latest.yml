@@ -1,4 +1,4 @@
-name: ci
+name: Publish GCR latest
 
 on:
   push:
