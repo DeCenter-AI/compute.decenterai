@@ -1,9 +1,7 @@
-# Stage 1: Install dependencies
 FROM python:3.10 AS builder
 
 WORKDIR /app
 
-# Install Poetry
 RUN pip install poetry
 
 ENV POETRY_VIRTUALENVS_IN_PROJECT=true
@@ -15,13 +13,10 @@ ENV POETRY_VIRTUALENVS_OPTIONS_NO_SETUPTOOLS=true
 
 RUN poetry config virtualenvs.create true
 
-# Copy only the dependency-related files
 COPY pyproject.toml poetry.lock ./
 
-# Install project dependencies using Poetry
 RUN poetry install --no-root
 
-# Stage 2: Copy application code and configure Streamlit
 FROM python:3.10-slim
 
 ARG cmd=train_v2
@@ -39,7 +34,7 @@ COPY . .
 # COPY --from=builder /usr/local/lib/python3.10/site-packages /usr/local/lib/python3.10/site-packages
 COPY --from=builder /app/.venv /app/venv
 
-# RUN . venv/bin/activate
+RUN source venv/bin/activate
 
 
 ENTRYPOINT ["/app/venv/python","main.py","$cmd"]
