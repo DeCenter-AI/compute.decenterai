@@ -27,9 +27,6 @@ FROM python:3.10-slim
 ARG cmd=train_v2
 ARG data_dir='/data'
 
-ENV mode=production
-
-EXPOSE 8501
 
 WORKDIR /app
 
