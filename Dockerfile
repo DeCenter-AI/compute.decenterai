@@ -38,8 +38,10 @@ COPY --from=builder /app/.venv /app/venv
 
 RUN chmod +x start.sh
 
+# ENTRYPOINT ['/app/venv/bin/python main.py',"train_v2"] FIXME: not working
+
 ENTRYPOINT ["/bin/bash", "-c", "/app/start.sh \"$@\""]
 
-# CMD ["--train_script=linear-regression.ipynb", "-i=/app/samples/sample_v3/sample_v3.zip"]
+CMD ["--train_script=linear-regression.ipynb", "-i=/app/samples/sample_v3/sample_v3.zip"]
 
 LABEL maintainer="Hiro <laciferin@gmail.com>"
