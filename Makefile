@@ -28,6 +28,7 @@ it:
 	docker run -it --entrypoint /bin/bash app
 
 run: 
+	export DATA_DIR='./data'
 	poetry run python main.py train_v2 --train_script=linear-regression.ipynb -i=samples/sample_v3/sample_v3.zip
 
 install:
