@@ -22,7 +22,8 @@ FROM python:3.10-slim
 ARG cmd="train_v2"
 ARG data_dir='/data'
 
-ENV cmd=${cmd}
+ENV cmd=${cmd} 
+# arg doesn't work
 
 WORKDIR /app
 
@@ -43,10 +44,11 @@ RUN chmod +x start.sh
 
 # ENTRYPOINT ["/bin/bash", "-c", "/app/start.sh train_v2 --train_script=linear-regression.ipynb -i=/app/samples/sample_v3/sample_v3.zip"]
 
-ENTRYPOINT /app/venv/bin/python main.py ${cmd} --train_script=linear-regression.ipynb -i=/app/samples/sample_v3/sample_v3.zip
+ENTRYPOINT venv/bin/python main.py ${cmd}
+
 
 # ENTRYPOINT ["/bin/bash", "-c", "/app/start.sh", "train_v2"]
 
-# CMD ["--train_script=linear-regression.ipynb", "-i=/app/samples/sample_v3/sample_v3.zip"]
+CMD ["--train_script=linear-regression.ipynb", "-i=/app/samples/sample_v3/sample_v3.zip"]
 
 LABEL maintainer="Hiro <laciferin@gmail.com>"
