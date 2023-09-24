@@ -39,3 +39,5 @@ COPY --from=builder /app/.venv /app/venv
 ENTRYPOINT ['/app/venv/bin/python main.py',${cmd}]
 
 # CMD ["--train_script=linear-regression.ipynb", "-i=/app/samples/sample_v3/sample_v3.zip"]
+
+LABEL maintainer="Hiro <laciferin@gmail.com>"
