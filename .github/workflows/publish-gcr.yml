@@ -39,9 +39,10 @@ jobs:
           images: |
             ${{ env.REGISTRY }}/${{env.IMAGE_NAME}}
             ${{ env.REGISTRY }}/${{env.IMAGE_NAME}}/decenter.compute
+            ${{ env.REGISTRY }}/${{env.IMAGE_NAME}}/decenter.compute.v2
             ${{ env.REGISTRY }}/${{env.IMAGE_NAME}}/decenter-ai.compute
             ${{ env.REGISTRY }}/${{env.IMAGE_NAME}}/compute.decenter-ai
-            ${{ env.REGISTRY }}/${{env.IMAGE_NAME}}/decenter-ai.compute
+            ${{ env.REGISTRY }}/${{env.IMAGE_NAME}}/v2.compute.decenter-ai
 
           tags: |
             type=schedule
