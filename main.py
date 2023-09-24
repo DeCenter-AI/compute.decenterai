@@ -69,7 +69,7 @@ def train(train_script: str, requirements_txt: str = None, data_dir=DATA_DIR):
     return True
 
 
-def train_v2(train_script: str, input_archive='decenter-model.zip', requirements_txt: str = None):
+def train_v2(train_script: str, input_archive: str, requirements_txt: str = None):
     logging.info(f"start {datetime.datetime.utcnow()}")
 
     data_dir = DATA_DIR
