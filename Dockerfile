@@ -46,8 +46,8 @@ RUN chmod +x start.sh
 
 # ENTRYPOINT ["/bin/bash", "-c", "/app/start.sh", "train_v2"]
 
-
-ENTRYPOINT /app/venv/bin/python main.py ${cmd}
+#FIXME: support cmd
+ENTRYPOINT ["/app/venv/bin/python","main.py","train_v2"]
 CMD ["-t='linear-regression.ipynb'", "-i=/app/samples/sample_v3/sample_v3.zip"]
 
 
