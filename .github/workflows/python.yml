@@ -14,6 +14,7 @@ on:
 
 env:
   mode: testing
+  envfile: ${{secrets.ENV}}
   "POETRY_VIRTUALENVS_IN_PROJECT": false
   "POETRY_VIRTUALENVS_OPTIONS_ALWAYS_COPY": true
   "POETRY_VIRTUALENVS_OPTIONS_NO_PIP": false

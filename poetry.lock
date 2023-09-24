@@ -1812,6 +1812,20 @@ files = [
 ]
 
 [[package]]
+name = "lighthouseweb3"
+version = "0.1.4"
+description = "Lighthouse Python SDK"
+optional = false
+python-versions = ">=3.6"
+files = [
+    {file = "lighthouseweb3-0.1.4-py3-none-any.whl", hash = "sha256:27e55cdc8bd23dd40aa9740e1a83e4849c4d07798000e6dd2cd9f76f01eb068d"},
+    {file = "lighthouseweb3-0.1.4.tar.gz", hash = "sha256:f0727ac3896295a893b0a7acc8d982a7d4d4edbd4d07975281a633aa5ccb5d55"},
+]
+
+[package.dependencies]
+requests = "*"
+
+[[package]]
 name = "markdown"
 version = "3.4.4"
 description = "Python implementation of John Gruber's Markdown."
@@ -4470,4 +4484,4 @@ ml = []
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10,<3.11"
-content-hash = "0f5208b979501803299877dcbde3c0a21552b71029593b9420b902ea8ec198ab"
+content-hash = "5a8d2cc792b99b25bbbc952671d74706d3e07ba1a6cac50ab339b3ac7909edc9"
