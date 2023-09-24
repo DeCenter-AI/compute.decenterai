@@ -42,9 +42,10 @@ def train(train_script: str, requirements_txt: str = None, data_dir='/data'):
             training_cmd = [python_repl, train_script]
         case ".ipynb":
             EXECUTION_FRAMEWORK = JUPYTER_NOTEBOOK
-            cmd_string = f'{sys.executable} -m jupyter nbconvert --execute --to html --output {train_script} {train_script}'
+            cmd_string = f'jupyter nbconvert --execute --to html --output {train_script} {train_script}'
             training_cmd = cmd_string.split(' ')
-        
+            training_cmd = [python_repl, '-m']+training_cmd
+
         case _:
             logging.critical('invalid training script')
             sys.exit(1)
