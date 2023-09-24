@@ -36,7 +36,6 @@ COPY --from=builder /app/.venv /app/venv
 
 RUN . venv/bin/activate
 
-
-ENTRYPOINT ["python","main.py","$cmd"]
+ENTRYPOINT ["./venv/bin/python","main.py","$cmd"]
 
 CMD ["--train_script=linear-regression.ipynb", "-i=/app/samples/sample_v3/sample_v3.zip"]
