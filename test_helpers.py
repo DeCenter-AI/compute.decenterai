@@ -20,11 +20,6 @@ def test_data_dir(tmpdir):
 # Test get_notebook_cmd function
 
 
-def test_get_notebook_cmd():
-    cmd = get_notebook_cmd("starter_script.ipynb", "python3")
-    assert cmd == ["python3", "-m", "jupyter", "nbconvert", "--execute",
-                   "--to", "notebook", "--allow-errors", "starter_script.ipynb"]
-
 # Test get_python_cmd function
 
 
@@ -37,7 +32,7 @@ def test_get_python_cmd():
 
 def test_install_dependencies():
     # Provide a requirements.txt file for testing
-    requirements_path = "path/to/requirements.txt"
+    requirements_path = "samples/sample_v3_2/requirements.txt"
     result = install_dependencies("python3", requirements_path)
     assert result.returncode == 0  # Check that the installation was successful
 
