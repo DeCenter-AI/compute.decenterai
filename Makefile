@@ -57,4 +57,18 @@ run_ghcr:
 	 docker run ghcr.io/decenter-ai/compute.decenter-ai/decenter.compute:sha-6c846a0
 	 docker run ghcr.io/decenter-ai/compute.decenter-ai:main
 
+sample_bacalhau:
+	bacalhau docker run ubuntu echo Hello World
+
+sample_b_1:
+	bacalhau docker run --gpu 1 ghcr.io/bacalhau-project/examples/stable-diffusion-gpu:0.0.1 -- python main.py --o ./outputs --p "cod swimming through data"
+
+
+sample_b_2:
+	bacalhau docker run --gpu 1 ghcr.io/decenter-ai/compute.decenter-ai:main-- python main.py --o ./outputs --p "cod swimming through data"
+
+
+sample_b:
+	make sample_bacalhau
+
 # sh start.sh train_v2 --train_script=linear-regression.ipynb -i=samples/sample_v3/sample_v3.zip
