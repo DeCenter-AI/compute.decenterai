@@ -75,6 +75,10 @@ sample_b_3:
 sample_b_4:
 	bacalhau docker run --gpu 1 ghcr.io/decenter-ai/compute.decenter-ai:main
 
+sample_b_5:
+	bacalhau docker run ghcr.io/decenter-ai/compute.decenter-ai:main -- '--train_script=linear-regression.ipynb -i=/app/samples/sample_v3/sample_v3.zip'
+
+
 sample_b:
 	make sample_bacalhau
 
