@@ -120,7 +120,7 @@ def train_v2(train_script: str, input_archive: str, requirements_txt: str = None
 
     if result:
         zipfile_ = archive_directory(
-            output_dir,
+            os.path.join(output_dir,output_archive),
             data_dir,
         )
         print("archived working directory", zipfile_)
