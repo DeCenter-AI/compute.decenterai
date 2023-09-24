@@ -8,3 +8,10 @@ services:
         - cmd=train_v2
     volumes:
       - ./data:/data
+
+    healthcheck:
+      test: ["CMD", "/app/venv/bin/python","/app/main.py","train_v2","--train_script=linear-regression.ipynb","-i=/app/samples/sample_v3/sample_v3.zip"]
+      interval: 10s
+      retries: 5
+      start_period: 5s
+      timeout: 10s
