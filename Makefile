@@ -52,4 +52,8 @@ test_docker2:
 test:
 	pytest
 
+run_ghcr:
+	 docker run ghcr.io/decenter-ai/compute.decenter-ai/decenter.compute:sha-6c846a0
+	 docker run ghcr.io/decenter-ai/compute.decenter-ai:main
+
 # sh start.sh train_v2 --train_script=linear-regression.ipynb -i=samples/sample_v3/sample_v3.zip
