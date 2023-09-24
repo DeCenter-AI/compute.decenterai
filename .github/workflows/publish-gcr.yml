@@ -59,7 +59,7 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
         with:
-          context: Dockerfile
+          context: .
           push: ${{ github.event_name != 'pull_request' }}
           # tags: ${{ env.REGISTRY }}/nasfame/bacalhau-fvm-nft:latest
           tags: ${{ steps.meta.outputs.tags }}
