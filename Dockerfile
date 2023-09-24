@@ -39,7 +39,7 @@ RUN mkdir -p $data_dir
 # COPY --from=builder /usr/local/lib/python3.10/site-packages /usr/local/lib/python3.10/site-packages
 COPY --from=builder /app/.venv /app/venv
 
-RUN . venv/bin/activate
+# RUN . venv/bin/activate
 
 COPY . .
 
