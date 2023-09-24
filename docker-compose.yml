@@ -1,0 +1,10 @@
+version: "3.8"
+services:
+  decenter.train_v2:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - cmd=train_v2
+    volumes:
+      - ./data:/data
