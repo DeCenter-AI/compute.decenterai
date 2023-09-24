@@ -35,13 +35,15 @@ WORKDIR /app
 
 RUN mkdir -p $data_dir
 
+
+COPY . .
+
 # Copy dependencies from the builder stage
 # COPY --from=builder /usr/local/lib/python3.10/site-packages /usr/local/lib/python3.10/site-packages
 COPY --from=builder /app/.venv /app/venv
 
 # RUN . venv/bin/activate
 
-COPY . .
 
 ENTRYPOINT ["/app/venv/python","main.py","$cmd"]
 
