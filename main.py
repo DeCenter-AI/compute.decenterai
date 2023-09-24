@@ -45,7 +45,7 @@ def train(train_script: str, requirements_txt: str = None, data_dir=DATA_DIR):
             EXECUTION_FRAMEWORK = JUPYTER_NOTEBOOK
             cmd_string = f'jupyter nbconvert --execute --to html --output {train_script} {train_script}'
             training_cmd = cmd_string.split(' ')
-            training_cmd = [python_repl, '-m']+training_cmd
+            training_cmd = [python_repl, '-m'] + training_cmd
 
         case _:
             logging.critical('invalid training script')

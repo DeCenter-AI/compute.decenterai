@@ -29,4 +29,7 @@ install:
 example_ref:
 	docker run ghcr.io/nasfame/bacalhau-fvm-nft:latest python main.py --p 'Hiro'
 
+sample_1:
+	python main.py train_v2 "linear-regression.ipynb" "/app/samples/sample_v3/sample_v3.zip"
+
 # sh start.sh train_v2 --train_script=linear-regression.ipynb -i=samples/sample_v3/sample_v3.zip
