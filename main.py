@@ -123,7 +123,7 @@ def train_v2(train_script: str, input_archive: str, requirements_txt: str = None
             os.path.join(output_dir,output_archive),
             data_dir,
         )
-        print("archived working directory", zipfile_)
+        print("archived working directory to", zipfile_)
 
     # temp_dir.cleanup()
     # logging.debug("cleanup the temp dir")
