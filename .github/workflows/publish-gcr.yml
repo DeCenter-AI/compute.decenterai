@@ -23,7 +23,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-
       - name: Log in to the Container registry
         uses: docker/login-action@v2
         with:
@@ -38,7 +37,7 @@ jobs:
         with:
           # base for tags
           images: |
-            ${{ env.REGISTRY }}/${{env.IMAGE_NAME}}
+            ${{ env.REGISTRY }}/${{env.IMAGE_NAME}}/decenter.compute
 
           tags: |
             type=schedule
@@ -47,7 +46,7 @@ jobs:
             type=ref,event=branch
             type=ref,event=tag
             type=ref,event=pr
-            
+
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
 
@@ -60,10 +59,12 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
         with:
-          context: .
-          push: true
+          context: Dockerfile
+          push: ${{ github.event_name != 'pull_request' }}
           # tags: ${{ env.REGISTRY }}/nasfame/bacalhau-fvm-nft:latest
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels}}
           github-token: ${{github.token}}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 # https://github.com/docker/metadata-action/tree/v4/
