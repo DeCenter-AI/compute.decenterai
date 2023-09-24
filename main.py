@@ -14,7 +14,8 @@ DATA_DIR = os.getenv('DATA_DIR', '/data')
 JUPYTER_NOTEBOOK: Final[str] = '.ipynb'
 PYTHON: Final[str] = '.py'
 
-output_dir: Final[str] = os.path.join(os.getcwd(), 'outputs')
+output_dir: Final[str] = os.getenv(
+    'OUTPUT_DIR', os.path.join(os.getcwd(), 'outputs'))
 
 EXECUTION_FRAMEWORK: str
 
@@ -120,7 +121,7 @@ def train_v2(train_script: str, input_archive: str, requirements_txt: str = None
 
     if result:
         zipfile_ = archive_directory(
-            os.path.join(output_dir,output_archive),
+            os.path.join(output_dir, output_archive),
             data_dir,
         )
         print("archived working directory to", zipfile_)
