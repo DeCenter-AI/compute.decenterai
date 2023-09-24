@@ -19,7 +19,7 @@ RUN poetry install --no-root
 
 FROM python:3.10-slim
 
-ARG cmd=train_v2
+ARG cmd="train_v2"
 ARG data_dir='/data'
 
 
