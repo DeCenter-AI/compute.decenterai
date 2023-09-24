@@ -22,4 +22,9 @@ it:
 run: 
 	poetry run python main.py train_v2 --train_script=linear-regression.ipynb -i=samples/sample_v3/sample_v3.zip
 
+install:
+	pip install poetry
+	poetry install --no-root
+	
+
 # sh start.sh train_v2 --train_script=linear-regression.ipynb -i=samples/sample_v3/sample_v3.zip
