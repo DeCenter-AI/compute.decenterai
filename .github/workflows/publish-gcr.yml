@@ -65,6 +65,7 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels}}
           github-token: ${{github.token}}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+          # cache-from: type=gha
+          # FIXME: enable cache
+          # cache-to: type=gha,mode=max
 # https://github.com/docker/metadata-action/tree/v4/
