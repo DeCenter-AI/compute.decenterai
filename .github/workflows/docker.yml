@@ -35,8 +35,21 @@ jobs:
       - name: Build "train_v2"
         run: |
           docker build  --build-arg cmd=train_v2 -t decenter.ai.v2 .
-    
 
+      - name: Run decenter.ai.v1
+        run: |
+          docker run decenter.ai.v1
+
+      - name: Run decenter.ai.v2
+        run: |
+          docker run decenter.ai.v2
+
+      - name: Docker compose
+        run: |
+          docker-compose up
+    
+    
+    
     # - name: Run tests
     #   run: |
     #     make test

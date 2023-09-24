@@ -33,7 +33,7 @@ def get_python_cmd(starter_script, python_interpreter=sys.executable):
     return command
 
 
-def install_deps(python_repl=sys.executable, requirements: list = None, cwd=None):
+def install_deps(python_repl=sys.executable, requirements: list = None):
     if not requirements:
         return
 
@@ -57,7 +57,7 @@ def install_dependencies(
 ):
     if requirements:
         logging.info('install_dependencies:')
-        install_deps(python_repl, requirements, cwd)
+        install_deps(python_repl, requirements)
 
     if not requirements_path:
         logging.warning('install_dependencies:requirements_path not found')
