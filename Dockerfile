@@ -13,6 +13,8 @@ ENV POETRY_VIRTUALENVS_OPTIONS_NO_SETUPTOOLS=true
 # ENV POETRY_VIRTUALENVS_PATH={cache-dir}/virtualenvs not required since virtual env is set in
 # fixme: add setup tooools
 
+RUN poetry config virtualenvs.create true
+
 # Copy only the dependency-related files
 COPY pyproject.toml poetry.lock ./
 
