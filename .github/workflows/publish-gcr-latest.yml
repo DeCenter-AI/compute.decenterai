@@ -48,3 +48,5 @@ jobs:
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
+
+        # TODO:Look at https://github.com/bacalhau-project/examples/blob/main/.github/workflows/tools-upload.yaml
