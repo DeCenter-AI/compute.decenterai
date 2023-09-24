@@ -34,7 +34,7 @@ COPY . .
 # COPY --from=builder /usr/local/lib/python3.10/site-packages /usr/local/lib/python3.10/site-packages
 COPY --from=builder /app/.venv /app/venv
 
-RUN source venv/bin/activate
+RUN . venv/bin/activate
 
 
 ENTRYPOINT ["/app/venv/python","main.py","$cmd"]
