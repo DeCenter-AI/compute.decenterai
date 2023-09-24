@@ -9,6 +9,7 @@ import fire
 from helpers import *
 
 python_repl = sys.executable
+DATA_DIR = os.getenv('DATA_DIR', '/data')
 
 JUPYTER_NOTEBOOK: Final[str] = '.ipynb'
 PYTHON: Final[str] = '.py'
@@ -16,11 +17,11 @@ PYTHON: Final[str] = '.py'
 EXECUTION_FRAMEWORK: str
 
 
-def train(train_script: str, requirements_txt: str = None, data_dir='/data'):
+def train(train_script: str, requirements_txt: str = None, data_dir=DATA_DIR):
     logging.info("starting train")
 
     if not os.path.exists(data_dir):
-        logging.critical(f'data dir {data_dir} not found')
+        logging.warning(f'data dir {data_dir} not found')
         sys.exit(1)
 
     if requirements_txt:
@@ -71,9 +72,16 @@ def train(train_script: str, requirements_txt: str = None, data_dir='/data'):
 def train_v2(train_script: str, requirements_txt: str = None, input_archive='decenter-model.zip'):
     logging.info(f"start {datetime.datetime.utcnow()}")
 
-    temp_dir = tempfile.TemporaryDirectory(prefix="decenter-ai-",
-                                           suffix="-training-working-dir", )
-    data_dir = temp_dir.name
+    data_dir = DATA_DIR
+    if not os.path.exists(data_dir):
+        logging.warning(f'data dir {data_dir} doesnt exists')
+
+        logging.info('creating temp directory for data dir')
+
+        temp_dir = tempfile.TemporaryDirectory(prefix="decenter-ai-",
+                                               suffix="-training-working-dir", )
+        data_dir = temp_dir.name
+
     print("data_dir is ", data_dir)
 
     with zipfile.ZipFile(input_archive, "r") as zip_ref:
@@ -94,13 +102,13 @@ def train_v2(train_script: str, requirements_txt: str = None, input_archive='dec
 
     if result:
         zipfile_ = archive_directory(
-            os.path.join(os.getcwd(), output_archive),
+            os.path.join(os.getcwd(), 'outputs', output_archive),
             data_dir,
         )
         print("archived working directory", zipfile_)
 
-    temp_dir.cleanup()
-    logging.debug("cleanup the temp dir")
+    # temp_dir.cleanup()
+    # logging.debug("cleanup the temp dir")
     logging.info(f"end {datetime.datetime.utcnow()}")
 
 
