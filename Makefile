@@ -32,4 +32,13 @@ example_ref:
 sample_1:
 	python main.py train_v2 "linear-regression.ipynb" "/app/samples/sample_v3/sample_v3.zip"
 
+test_docker:
+	 docker run app 'linear-regression.ipynb' '/app/samples/sample_v3/sample_v3.zip'
+
+test_docker1:
+	 docker run app '-t=linear-regression.ipynb' '-i=/app/samples/sample_v3/sample_v3.zip'
+
+test_docker2:
+	 docker run app '-t=linear-regression1.ipynb' '-i=/app/samples/sample_v3/sample_v3.zip'
+
 # sh start.sh train_v2 --train_script=linear-regression.ipynb -i=samples/sample_v3/sample_v3.zip

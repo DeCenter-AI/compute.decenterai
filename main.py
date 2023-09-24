@@ -14,14 +14,23 @@ DATA_DIR = os.getenv('DATA_DIR', '/data')
 JUPYTER_NOTEBOOK: Final[str] = '.ipynb'
 PYTHON: Final[str] = '.py'
 
+output_dir: Final[str] = os.path.join(os.getcwd(), 'outputs')
+
 EXECUTION_FRAMEWORK: str
+
+
+def path_not_found(path: str):
+    if not os.path.exists(path):
+        logging.warning(f'{path} not found')
+        return True
+
+    return False
 
 
 def train(train_script: str, requirements_txt: str = None, data_dir=DATA_DIR):
     logging.info("starting train")
 
-    if not os.path.exists(data_dir):
-        logging.warning(f'data dir {data_dir} not found')
+    if path_not_found(data_dir):
         sys.exit(1)
 
     if requirements_txt:
@@ -30,10 +39,19 @@ def train(train_script: str, requirements_txt: str = None, data_dir=DATA_DIR):
             data_dir,
             requirements_txt,
         )
-        install_dependencies(
-            python_repl,
-            requirements_path,
-        )
+        if path_not_found(requirements_path):
+            logging.critical(
+                f"requirements path- {requirements_path} not found")
+        else:
+            install_dependencies(
+                python_repl,
+                requirements_path,
+            )
+
+    train_script = os.path.join(data_dir, train_script)
+    if path_not_found(train_script):
+        logging.critical(f"train script path- {train_script} not found")
+        sys.exit(1)
 
     training_cmd: List[str]
     script_ext = os.path.splitext(train_script)[1]
@@ -102,7 +120,7 @@ def train_v2(train_script: str, input_archive: str, requirements_txt: str = None
 
     if result:
         zipfile_ = archive_directory(
-            os.path.join(os.getcwd(), 'outputs', output_archive),
+            output_dir,
             data_dir,
         )
         print("archived working directory", zipfile_)
