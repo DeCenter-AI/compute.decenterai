@@ -5459,9 +5459,9 @@ multidict = ">=4.0"
 
 [extras]
 dev = ["pytest"]
-ml = []
+ml = ["tensorflow"]
 
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10,<3.11"
-content-hash = "da9f685f3379c324e3e7e0414fefa13538652202b125cf2a5e7a9aef87e269fe"
+content-hash = "4a5a6d2d9dc0e18e8a5f53172fb3732ecc5bc5c294aad7805b57a095bb3120eb"
