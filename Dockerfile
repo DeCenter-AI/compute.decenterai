@@ -44,11 +44,11 @@ RUN chmod +x start.sh
 
 # ENTRYPOINT ["/bin/bash", "-c", "/app/start.sh train_v2 --train_script=linear-regression.ipynb -i=/app/samples/sample_v3/sample_v3.zip"]
 
-ENTRYPOINT venv/bin/python main.py ${cmd}
-
-
 # ENTRYPOINT ["/bin/bash", "-c", "/app/start.sh", "train_v2"]
 
+
+ENTRYPOINT ["venv/bin/python", "main.py, ${cmd}]
 CMD ["--train_script=linear-regression.ipynb", "-i=/app/samples/sample_v3/sample_v3.zip"]
+
 
 LABEL maintainer="Hiro <laciferin@gmail.com>"

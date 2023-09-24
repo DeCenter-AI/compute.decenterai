@@ -26,5 +26,7 @@ install:
 	pip install poetry
 	poetry install --no-root
 	
+example_ref:
+	docker run ghcr.io/nasfame/bacalhau-fvm-nft:latest python main.py --p 'Hiro'
 
 # sh start.sh train_v2 --train_script=linear-regression.ipynb -i=samples/sample_v3/sample_v3.zip
