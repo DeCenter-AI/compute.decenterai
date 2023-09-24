@@ -18,8 +18,11 @@ gh:
 	docker run app
 
 dc:
-	docker-compose down
-	docker-compose up --force-recreate
+	docker-compose down -v --rmi all
+	docker-compose up -d
+
+	# docker-compose down
+	# docker-compose up --force-recreate
 
 it:
 	docker run -it --entrypoint /bin/bash app
