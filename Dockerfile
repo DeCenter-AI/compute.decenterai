@@ -54,7 +54,10 @@ RUN chmod +x start.sh
 
 # HEALTHCHECK ['']
 
-ENTRYPOINT [ "/app/venv/bin/python main.py $PYTHON_COMMAND"]
+# ENTRYPOINT "/app/venv/bin/python main.py $PYTHON_COMMAND"
+
+ENTRYPOINT ["/app/venv/bin/python","main.py","train_v2"]
+
 CMD ["-t=linear-regression.ipynb", "-i=/app/samples/sample_v3/sample_v3.zip"]
 
 
