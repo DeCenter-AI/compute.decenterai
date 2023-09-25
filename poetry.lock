@@ -1175,6 +1175,17 @@ files = [
 ]
 
 [[package]]
+name = "ipfs-cid"
+version = "1.0.0"
+description = "A library for building IPFS CID v1 compatible content identifiers using fixed encoding parameters."
+optional = false
+python-versions = ">=3.8,<4.0"
+files = [
+    {file = "ipfs_cid-1.0.0-py3-none-any.whl", hash = "sha256:341985f50f893e0e49cf7da0fc0c4ba1afbe57fdea8a215724fd708de4ef96cb"},
+    {file = "ipfs_cid-1.0.0.tar.gz", hash = "sha256:a752c87cde68840e27dcb02f4e7cf940297fae43872bb5e6ef3bf73ad31af73d"},
+]
+
+[[package]]
 name = "ipykernel"
 version = "6.25.2"
 description = "IPython Kernel for Jupyter"
@@ -4593,4 +4604,4 @@ ml = []
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10,<3.11"
-content-hash = "39f3f20233a460d3d72c6e5fa55833142aed9abc88c137e260518ba67c88e87f"
+content-hash = "91281ff96830196810ae766714486b5dd1019d87fa51d4167d73be1672366a16"
