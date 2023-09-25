@@ -113,7 +113,7 @@ def train_v2(train_script: str, input_archive: str, requirements_txt: str = None
     print("data_dir is ", data_dir)
 
     if is_cid(input_archive):
-        new_archive = os.path.join(data_dir, 'new-archive.zip')
+        new_archive = os.path.join(data_dir, 'decenter-input-model.zip')
         lighthouse.download(input_archive, new_archive)
         input_archive = new_archive
 
