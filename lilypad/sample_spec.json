@@ -1,0 +1,30 @@
+{
+  "Engine": "docker",
+  "Verifier": "noop",
+  "PublisherSpec": {
+    "Type": "estuary"
+  },
+  "Docker": {
+    "Image": "ghcr.io/bacalhau-project/examples/stable-diffusion-gpu:0.0.1",
+    "Entrypoint": [
+      "python",
+      "main.py",
+      "--o",
+      "./outputs",
+      "--p",
+      "A User Prompt Goes here"
+    ]
+  },
+  "Resources": {
+    "GPU": "1"
+  },
+  "Outputs": [
+    {
+      "Name": "outputs",
+      "Path": "/outputs"
+    }
+  ],
+  "Deal": {
+    "Concurrency": 1
+  }
+}
