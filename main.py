@@ -9,6 +9,8 @@ from dotenv import load_dotenv
 import fire
 
 from helpers import *
+from web3 import lighthouse
+from web3.cid import is_cid
 
 python_repl = sys.executable
 DATA_DIR = os.getenv('DATA_DIR', '/data')
@@ -109,6 +111,11 @@ def train_v2(train_script: str, input_archive: str, requirements_txt: str = None
         data_dir = temp_dir.name
 
     print("data_dir is ", data_dir)
+
+    if is_cid(input_archive):
+        new_archive = os.path.join(data_dir, 'new-archive.zip')
+        lighthouse.download(input_archive, new_archive)
+        input_archive = new_archive
 
     with zipfile.ZipFile(input_archive, "r") as zip_ref:
         zip_ref.extractall(data_dir)

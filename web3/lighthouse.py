@@ -39,7 +39,8 @@ def download(cid: str, path_to_save: str) -> LighthouseFile:
 if __name__ == "__main__":
     lh = Lighthouse(token='56c91764.0d69cc79074f460c86a9a6d0601a8f65')
 
-    response = lh.upload("__init__.py")
+    response = lh.upload(
+        '/Users/hiro/Decenter/decenter.streamlit/compute.decenter-ai/samples/kaggle/inputs/headbrain.zip')
     print(response)
 
     data = response['data']
@@ -50,6 +51,7 @@ if __name__ == "__main__":
         os.mkdir('data')
 
     sample_v3_cid = "QmP9xCDVx4N5uVNezeurdepMn9nrynpvuYVvVAZNPmYn1x"
+    sample_v3_cid = upFile.hash
     path_to_save = "./data/x.zip"
 
     with open(path_to_save, 'w') as f1:

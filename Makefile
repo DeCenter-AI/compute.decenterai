@@ -107,7 +107,7 @@ sample_b_8_https:
 	bacalhau docker run \
 	 --download \
 	 -o ./outputs:/outputs \
-	 -i https://gateway.lighthouse.storage/ipfs/QmP9xCDVx4N5uVNezeurdepMn9nrynpvuYVvVAZNPmYn1x:/data/simple-linear-regression.zip ghcr.io/decenter-ai/compute.decenter-ai/decenter.compute.v1:main \
+	 -i https://gateway.lighthouse.storage/ipfs/QmP9xCDVx4N5uVNezeurdepMn9nrynpvuYVvVAZNPmYn1x:/outputs/simple-linear-regression.zip ghcr.io/decenter-ai/compute.decenter-ai/decenter.compute.v1:main \
 	  -- /app/venv/bin/python main.py train_v2 -t=simple-linear-regression.ipynb -i=/data/simple-linear-regression.zip
 
 
