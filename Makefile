@@ -80,6 +80,7 @@ sample_b_5:
 	bacalhau docker run ghcr.io/decenter-ai/compute.decenter-ai:main -- '--train_script=linear-regression.ipynb -i=/app/samples/sample_v3/sample_v3.zip'
 
 sample_b_6:
+# FIXME: doens't work need to override entrypoint as 
 	bacalhau docker run \
 	 -i ipfs://QmP9xCDVx4N5uVNezeurdepMn9nrynpvuYVvVAZNPmYn1x:/data/simple-linear-regression.zip ghcr.io/decenter-ai/compute.decenter-ai/decenter.compute.v1:main \
 	  -- '-t=simple-linear-regression.ipynb -i=/data/simple-linear-regression.zip'
@@ -95,11 +96,19 @@ sample_b_6_local:
 sample_b_7:
 	bacalhau docker run \
 	 --download \
-	 -o ./outputs:/outputs ./data:/data \
+	 -o ./outputs:/outputs \
+	 -o ./data:/data \
 	 -i ipfs://QmP9xCDVx4N5uVNezeurdepMn9nrynpvuYVvVAZNPmYn1x:/data/simple-linear-regression.zip ghcr.io/decenter-ai/compute.decenter-ai/decenter.compute.v1:main \
 	  -- '-t=simple-linear-regression.ipynb -i=/data/simple-linear-regression.zip'
 
 
+sample_b_8_https:
+# TOOD: working 
+	bacalhau docker run \
+	 --download \
+	 -o ./outputs:/outputs \
+	 -i https://gateway.lighthouse.storage/ipfs/QmP9xCDVx4N5uVNezeurdepMn9nrynpvuYVvVAZNPmYn1x:/data/simple-linear-regression.zip ghcr.io/decenter-ai/compute.decenter-ai/decenter.compute.v1:main \
+	  -- /app/venv/bin/python main.py train_v2 -t=simple-linear-regression.ipynb -i=/data/simple-linear-regression.zip
 
 
 
