@@ -29,7 +29,8 @@ it:
 
 run: 
 	# DATA_DIR='$(pwd)/data' poetry run python main.py train_v2 --train_script=linear-regression.ipynb -i=samples/sample_v3/sample_v3.zip
-	DATA_DIR='./data' poetry run python main.py train_v2 --train_script=linear-regression.ipynb -i=samples/sample_v3/sample_v3.zip
+	# DATA_DIR='./data' poetry run python main.py train_v2 --train_script=linear-regression.ipynb -i=samples/sample_v3/sample_v3.zip
+	DATA_DIR='./data' poetry run python main.py train_v2 -t=linear-regression.ipynb -i=samples/sample_v3/sample_v3.zip
 
 install:
 	pip install poetry
@@ -77,6 +78,22 @@ sample_b_4:
 
 sample_b_5:
 	bacalhau docker run ghcr.io/decenter-ai/compute.decenter-ai:main -- '--train_script=linear-regression.ipynb -i=/app/samples/sample_v3/sample_v3.zip'
+
+sample_b_6:
+	bacalhau docker run \
+	 -i ipfs://QmP9xCDVx4N5uVNezeurdepMn9nrynpvuYVvVAZNPmYn1x:/data/simple-linear-regression.zip ghcr.io/decenter-ai/compute.decenter-ai/decenter.compute.v1:main \
+	  -- '-t=simple-linear-regression.ipynb -i=/data/simple-linear-regression.zip'
+# TODO: put in the ipfs swarm nodes of lighthouse: 
+#  --ipfs-swarm-addrs=(default "/ip4/35.245.115.191/tcp/1235/p2p/QmdZQ7ZbhnvWY1J12XYKGHApJ6aufKyLNSvf8jZBrBaAVL,/ip4/35.245.61.251/tcp/1235/p2p/QmXaXu9N5GNe
+# tatsvwnTfQqNtSeKAD6uCmarbh3LMRYAcF,/ip4/35.245.251.239/tcp/1235/p2p/QmYgxZiySj3MRkwLSL4X2MF5F9f2PMhAE3LV49XkfNL1o3")
+
+sample_b_6_local:
+		bacalhau docker run --local \
+		-i ipfs://QmP9xCDVx4N5uVNezeurdepMn9nrynpvuYVvVAZNPmYn1x:/data/simple-linear-regression.zip ghcr.io/decenter-ai/compute.decenter-ai/decenter.compute.v1:main \
+		 -- '-t=simple-linear-regression.ipynb -i=/data/simple-linear-regression.zip'
+
+
+
 
 
 sample_b:

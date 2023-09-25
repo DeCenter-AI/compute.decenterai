@@ -23,6 +23,8 @@ ARG cmd="train_v2"
 ARG data_dir='/data'
 
 ENV PYTHON_COMMAND=$cmd
+ENV DATA_DIR=$data_dir
+ENV OUTPUT_DIR = '/outputs'
 # arg doesn't work
 
 # VOLUME ["/data"]
