@@ -4,6 +4,8 @@ import tempfile
 import zipfile
 from typing import Final, List
 
+from dotenv import load_dotenv
+
 import fire
 
 from helpers import *
@@ -136,6 +138,8 @@ def train_v2(train_script: str, input_archive: str, requirements_txt: str = None
 
 
 if __name__ == "__main__":
+    load_dotenv()
+
     logging.basicConfig(level=logging.INFO)
 
     # fire.Fire(train, 'train', 'Train')

@@ -13,6 +13,9 @@ concurrency:
   cancel-in-progress: true
 
 env:
+  mode: testing
+  envfile: ${{secrets.ENV}}
+
   "POETRY_VIRTUALENVS_IN_PROJECT": false
   "POETRY_VIRTUALENVS_OPTIONS_ALWAYS_COPY": false
   "POETRY_VIRTUALENVS_OPTIONS_NO_PIP": false
@@ -45,6 +48,12 @@ jobs:
             **/requirements*.txt
             poetry.lock
             pyproject.toml
+
+      - name: Write environment
+        run: |
+          echo $envfile > .env
+          sed -i 's/ /\n/g' .env
+          source .env
 
       - name: Install dependencies
         run: |
