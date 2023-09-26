@@ -10,7 +10,7 @@ class App:
     train_cmd: str = "train_v2"
     t: str = "linear-regression.ipynb"
     i: str = "/app/samples/sample_v3/sample_v3.zip"
-    seed: int = 1  # not used but for deterministic
+    seed: int = 0  # not used but for deterministic
 
     @property
     def json(self) -> str:
