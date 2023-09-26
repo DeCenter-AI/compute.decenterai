@@ -1,12 +1,11 @@
-from lighthouseweb3 import Lighthouse
-
-from dotenv import load_dotenv
 import os
-
 from dataclasses import dataclass
 
-import logging
+from dotenv import load_dotenv
 from icecream import ic
+from lighthouseweb3 import Lighthouse
+
+lh = Lighthouse(token='56c91764.0d69cc79074f460c86a9a6d0601a8f65')
 
 
 @dataclass
@@ -28,7 +27,7 @@ def upload(path: str) -> LighthouseFile:
 
 def download(cid: str, path_to_save: str) -> LighthouseFile:
     with open(path_to_save, 'w') as f1:
-        res = lh.downloadBlob(f1.buffer, sample_v3_cid)
+        res = lh.downloadBlob(f1.buffer, cid)
         ic(f"ligthouse:downloaded {path_to_save}")
         data = response['data']
         upF1 = LighthouseFile(cid, data['Hash'], data['Size'])
