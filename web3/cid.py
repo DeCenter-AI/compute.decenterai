@@ -1,7 +1,5 @@
-from multibase import is_valid_multibase
+import cid
 
 
 def is_cid(cid: str):
-    return is_valid_multibase(cid)
-
-
+    return cid.is_cid(cid)

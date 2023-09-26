@@ -44,7 +44,6 @@ python-dotenv = "1.0.0"
 fire = "^0.5.0"
 py-cid = "^0.3.0"
 ipfs-cid = "^1.0.0"
-py-multibase = "^1.0.3"
 
 
 [tool.poetry.group.dev.dependencies]
