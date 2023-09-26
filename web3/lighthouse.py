@@ -50,9 +50,9 @@ if __name__ == "__main__":
     if not os.path.exists('data'):
         os.mkdir('data')
 
-    sample_v3_cid = "QmP9xCDVx4N5uVNezeurdepMn9nrynpvuYVvVAZNPmYn1x"
+    sample_v3_cid = "QmP9xCDVx4N5uVNezeurdepMn9nrynpvuYVvVAZNPmYn1"
     sample_v3_cid = upFile.hash
-    path_to_save = os.path.join('./data', sample_v3_cid)
+    path_to_save = os.path.join('./data', f"{sample_v3_cid}.zip")
 
     with open(path_to_save, 'w') as f1:
         res = lh.downloadBlob(f1.buffer, sample_v3_cid)
