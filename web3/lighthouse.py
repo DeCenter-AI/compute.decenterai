@@ -1,12 +1,11 @@
-from lighthouseweb3 import Lighthouse
-
-from dotenv import load_dotenv
 import os
-
 from dataclasses import dataclass
 
-import logging
+from dotenv import load_dotenv
 from icecream import ic
+from lighthouseweb3 import Lighthouse
+
+lh = Lighthouse(token='56c91764.0d69cc79074f460c86a9a6d0601a8f65')
 
 
 @dataclass
@@ -28,7 +27,7 @@ def upload(path: str) -> LighthouseFile:
 
 def download(cid: str, path_to_save: str) -> LighthouseFile:
     with open(path_to_save, 'w') as f1:
-        res = lh.downloadBlob(f1.buffer, sample_v3_cid)
+        res = lh.downloadBlob(f1.buffer, cid)
         ic(f"ligthouse:downloaded {path_to_save}")
         data = response['data']
         upF1 = LighthouseFile(cid, data['Hash'], data['Size'])
@@ -37,9 +36,11 @@ def download(cid: str, path_to_save: str) -> LighthouseFile:
 
 
 if __name__ == "__main__":
+    # TODO: get from environmetn variable
     lh = Lighthouse(token='56c91764.0d69cc79074f460c86a9a6d0601a8f65')
 
-    response = lh.upload("__init__.py")
+    response = lh.upload(
+        '/Users/hiro/Decenter/decenter.streamlit/compute.decenter-ai/samples/sample_v3/sample_v3.zip')
     print(response)
 
     data = response['data']
@@ -49,8 +50,9 @@ if __name__ == "__main__":
     if not os.path.exists('data'):
         os.mkdir('data')
 
-    sample_v3_cid = "QmP9xCDVx4N5uVNezeurdepMn9nrynpvuYVvVAZNPmYn1x"
-    path_to_save = "./data/x.zip"
+    sample_v3_cid = "QmP9xCDVx4N5uVNezeurdepMn9nrynpvuYVvVAZNPmYn1"
+    sample_v3_cid = upFile.hash
+    path_to_save = os.path.join('./data', f"{sample_v3_cid}.zip")
 
     with open(path_to_save, 'w') as f1:
         res = lh.downloadBlob(f1.buffer, sample_v3_cid)

@@ -212,6 +212,18 @@ files = [
 ]
 
 [[package]]
+name = "base58"
+version = "1.0.3"
+description = "Base58 and Base58Check implementation"
+optional = false
+python-versions = "*"
+files = [
+    {file = "base58-1.0.3-py2-none-any.whl", hash = "sha256:1e42993c0628ed4f898c03b522b26af78fb05115732549b21a028bc4633d19ab"},
+    {file = "base58-1.0.3-py3-none-any.whl", hash = "sha256:6aa0553e477478993588303c54659d15e3c17ae062508c854a8b752d07c716bd"},
+    {file = "base58-1.0.3.tar.gz", hash = "sha256:9a793c599979c497800eb414c852b80866f28daaed5494703fc129592cc83e60"},
+]
+
+[[package]]
 name = "beautifulsoup4"
 version = "4.12.2"
 description = "Screen-scraping library"
@@ -1163,6 +1175,17 @@ files = [
 ]
 
 [[package]]
+name = "ipfs-cid"
+version = "1.0.0"
+description = "A library for building IPFS CID v1 compatible content identifiers using fixed encoding parameters."
+optional = false
+python-versions = ">=3.8,<4.0"
+files = [
+    {file = "ipfs_cid-1.0.0-py3-none-any.whl", hash = "sha256:341985f50f893e0e49cf7da0fc0c4ba1afbe57fdea8a215724fd708de4ef96cb"},
+    {file = "ipfs_cid-1.0.0.tar.gz", hash = "sha256:a752c87cde68840e27dcb02f4e7cf940297fae43872bb5e6ef3bf73ad31af73d"},
+]
+
+[[package]]
 name = "ipykernel"
 version = "6.25.2"
 description = "IPython Kernel for Jupyter"
@@ -2027,6 +2050,16 @@ numpy = {version = ">=1.21.2", markers = "python_version > \"3.9\""}
 dev = ["absl-py", "pyink", "pylint (>=2.6.0)", "pytest", "pytest-xdist"]
 
 [[package]]
+name = "morphys"
+version = "1.0"
+description = "Smart conversions between unicode and bytes types for common cases"
+optional = false
+python-versions = "*"
+files = [
+    {file = "morphys-1.0-py2.py3-none-any.whl", hash = "sha256:76d6dbaa4d65f597e59d332c81da786d83e4669387b9b2a750cfec74e7beec20"},
+]
+
+[[package]]
 name = "murmurhash"
 version = "1.0.10"
 description = "Cython bindings for MurmurHash"
@@ -2710,6 +2743,24 @@ files = [
 tests = ["pytest"]
 
 [[package]]
+name = "py-cid"
+version = "0.3.0"
+description = "Self-describing content-addressed identifiers for distributed systems"
+optional = false
+python-versions = "*"
+files = [
+    {file = "py-cid-0.3.0.tar.gz", hash = "sha256:22f432cc6fb68d12a9c35dbdc92c95484fc49e31dfcb9e0efb0082233c5394e3"},
+    {file = "py_cid-0.3.0-py2.py3-none-any.whl", hash = "sha256:7c48a6ee0bc50fd114d4b24849cd689a31d3ad5bdf8fa073bf68f846fd58c5da"},
+]
+
+[package.dependencies]
+base58 = ">=1.0.2,<2.0"
+morphys = ">=1.0,<2.0"
+py-multibase = ">=1.0.0,<2.0.0"
+py-multicodec = "<0.3.0"
+py-multihash = ">=0.2.0,<1.0.0"
+
+[[package]]
 name = "py-cpuinfo"
 version = "9.0.0"
 description = "Get CPU info with pure Python"
@@ -2719,6 +2770,55 @@ files = [
     {file = "py-cpuinfo-9.0.0.tar.gz", hash = "sha256:3cdbbf3fac90dc6f118bfd64384f309edeadd902d7c8fb17f02ffa1fc3f49690"},
     {file = "py_cpuinfo-9.0.0-py3-none-any.whl", hash = "sha256:859625bc251f64e21f077d099d4162689c762b5d6a4c3c97553d56241c9674d5"},
 ]
+
+[[package]]
+name = "py-multibase"
+version = "1.0.3"
+description = "Multibase implementation for Python"
+optional = false
+python-versions = "*"
+files = [
+    {file = "py-multibase-1.0.3.tar.gz", hash = "sha256:d28a20efcbb61eec28f55827a0bf329c7cea80fffd933aecaea6ae8431267fe4"},
+    {file = "py_multibase-1.0.3-py2.py3-none-any.whl", hash = "sha256:2677c1fafcc0ae15ddb9c7f444c5becc2530b3889124fd4fa2959ddfefb8c15b"},
+]
+
+[package.dependencies]
+morphys = ">=1.0,<2.0"
+python-baseconv = ">=1.2.0,<2.0"
+six = ">=1.10.0,<2.0"
+
+[[package]]
+name = "py-multicodec"
+version = "0.2.1"
+description = "Multicodec implementation in Python"
+optional = false
+python-versions = "*"
+files = [
+    {file = "py-multicodec-0.2.1.tar.gz", hash = "sha256:83021ffe8c0e272d19b5b86bc5b39efa67c8e9f4735ce6cafdbc1ace767ec647"},
+    {file = "py_multicodec-0.2.1-py2.py3-none-any.whl", hash = "sha256:55b6bb53088a63e56c434cb11b29795e8805652bac43d50a8f2a9bcf5ca84e1f"},
+]
+
+[package.dependencies]
+morphys = ">=1.0,<2.0"
+six = ">=1.10.0,<2.0"
+varint = ">=1.0.2,<2.0.0"
+
+[[package]]
+name = "py-multihash"
+version = "0.2.3"
+description = "Multihash implementation in Python"
+optional = false
+python-versions = "*"
+files = [
+    {file = "py-multihash-0.2.3.tar.gz", hash = "sha256:f0ade4de820afdc4b4aaa40464ec86c9da5cae3a4578cda2daab4b0eb7e5b18d"},
+    {file = "py_multihash-0.2.3-py2.py3-none-any.whl", hash = "sha256:a0602c99093587dfbf1634e2e8c7726de39374b0d68587a36093b4c237af6969"},
+]
+
+[package.dependencies]
+base58 = ">=1.0.2,<2.0"
+morphys = ">=1.0,<2.0"
+six = ">=1.10.0,<2.0"
+varint = ">=1.0.2,<2.0"
 
 [[package]]
 name = "pyasn1"
@@ -2984,6 +3084,16 @@ pytest = ">=3.8"
 aspect = ["aspectlib"]
 elasticsearch = ["elasticsearch"]
 histogram = ["pygal", "pygaljs"]
+
+[[package]]
+name = "python-baseconv"
+version = "1.2.2"
+description = "Convert numbers from base 10 integers to base X strings and back again."
+optional = false
+python-versions = "*"
+files = [
+    {file = "python-baseconv-1.2.2.tar.gz", hash = "sha256:0539f8bd0464013b05ad62e0a1673f0ac9086c76b43ebf9f833053527cd9931b"},
+]
 
 [[package]]
 name = "python-dateutil"
@@ -4276,6 +4386,16 @@ socks = ["pysocks (>=1.5.6,!=1.5.7,<2.0)"]
 zstd = ["zstandard (>=0.18.0)"]
 
 [[package]]
+name = "varint"
+version = "1.0.2"
+description = "Simple python varint implementation"
+optional = false
+python-versions = "*"
+files = [
+    {file = "varint-1.0.2.tar.gz", hash = "sha256:a6ecc02377ac5ee9d65a6a8ad45c9ff1dac8ccee19400a5950fb51d594214ca5"},
+]
+
+[[package]]
 name = "virtualenv"
 version = "20.24.5"
 description = "Virtual Python Environment builder"
@@ -4484,4 +4604,4 @@ ml = []
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10,<3.11"
-content-hash = "5a8d2cc792b99b25bbbc952671d74706d3e07ba1a6cac50ab339b3ac7909edc9"
+content-hash = "91281ff96830196810ae766714486b5dd1019d87fa51d4167d73be1672366a16"

@@ -23,6 +23,8 @@ ARG cmd="train_v2"
 ARG data_dir='/data'
 
 ENV PYTHON_COMMAND=$cmd
+ENV DATA_DIR=$data_dir
+ENV OUTPUT_DIR = '/outputs'
 # arg doesn't work
 
 # VOLUME ["/data"]
@@ -38,7 +40,7 @@ COPY . .
 # COPY --from=builder /usr/local/lib/python3.10/site-packages /usr/local/lib/python3.10/site-packages
 COPY --from=builder /app/.venv /app/venv
 
-COPY samples ${data_dir}
+# COPY samples ${data_dir} Don't do we are zipping the data dir
 
 # RUN . venv/bin/activate
 
