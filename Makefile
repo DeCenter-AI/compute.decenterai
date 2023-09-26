@@ -115,8 +115,27 @@ sample_b_8_https:
 	  -- /app/venv/bin/python main.py train_v2 -t=simple-linear-regression.ipynb -i=/data/simple-linear-regression.zip
 
 
-
 sample_b:
 	make sample_bacalhau
+
+lily_sample:
+	lilypad run sdxl:v0.9-lilypad1 "an astronaut riding on a unicorn"
+
+lily_sample_2:
+	lilypad run sdxl:v0.9-lilypad1 '{"prompt": "an astronaut riding on a unicorn", "seed": 9}'
+	# Since modules are deterministic, running this command with the same text prompt will produce the same image, since the same seed is also used (the default seed is 0).
+	# Hack: pass in different seeds
+	# TODO: enter https://ipfs.io/ipfs/<resultCID> or ipfs://<resultCID>
+	# doc: https://docs.lilypadnetwork.org/lilypad-v1-examples/stable-diffusion
+
+lily_1:
+	lilypad run github.com/DeCenter-AI/compute.decenter-ai:main -i Message=moo
+	
+
+
+
+
+
+
 
 # sh start.sh train_v2 --train_script=linear-regression.ipynb -i=samples/sample_v3/sample_v3.zip
