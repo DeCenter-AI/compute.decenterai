@@ -132,6 +132,10 @@ lily_1:
 	lilypad run github.com/DeCenter-AI/compute.decenter-ai:main -i Message=moo
 	
 
+lily_decenter:
+	lilypad run github.com/DeCenter-AI/compute.decenter-ai:main '{"train_cmd": "train_v2", "t": "linear-regression.ipynb", "i": "/app/samples/sample_v3/sample_v3.zip", "seed": 1}'
+	#lilypad run decenter:main '{"train_cmd": "train_v2", "t": "linear-regression.ipynb", "i": "/app/samples/sample_v3/sample_v3.zip", "seed": 1}'
+
 
 
 

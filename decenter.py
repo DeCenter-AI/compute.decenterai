@@ -100,4 +100,11 @@ def _decenter(params: str):
 
 if __name__ == "__main__":
     a = App()
-    _decenter(a.json)
+    print(a.json)
+    print(_decenter(a.json))
+    print(_decenter(App(seed=1).json))
+
+    input_str = '{"train_cmd": "train_v2", "t": "linear-regression.ipynb", "i": "/app/samples/sample_v3/sample_v3.zip", "seed": 2}'
+    a = App.loads(input_str)
+    assert a.seed == 2
+    print(_decenter(input_str))
