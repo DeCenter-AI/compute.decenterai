@@ -4,9 +4,8 @@ import tempfile
 import zipfile
 from typing import Final, List
 
-from dotenv import load_dotenv
-
 import fire
+from dotenv import load_dotenv
 
 from helpers import *
 from web3 import lighthouse
@@ -14,7 +13,6 @@ from web3.cid import is_cid
 
 python_repl = sys.executable
 DATA_DIR = os.getenv('DATA_DIR', '/data')
-
 
 JUPYTER_NOTEBOOK: Final[str] = '.ipynb'
 PYTHON: Final[str] = '.py'
@@ -113,9 +111,10 @@ def train_v2(train_script: str, input_archive: str, requirements_txt: str = None
     print("data_dir is ", data_dir)
 
     if is_cid(input_archive):
-        new_archive = os.path.join(data_dir, 'decenter-input-model.zip')
-        lighthouse.download(input_archive, new_archive)
-        input_archive = new_archive
+        new_archive = os.path.join(data_dir, f'{input_archive}.zip')
+        f2 = lighthouse.download(input_archive, new_archive)
+        input_archive = os.path.join(data_dir, f2.name)
+        os.rename(new_archive, input_archive)
 
     with zipfile.ZipFile(input_archive, "r") as zip_ref:
         zip_ref.extractall(data_dir)
@@ -139,6 +138,10 @@ def train_v2(train_script: str, input_archive: str, requirements_txt: str = None
             data_dir,
         )
         print("archived working directory to", zipfile_)
+
+        if isinstance(data_dir, tempfile.TemporaryDirectory):
+            print("cleaning up the data dirctory")
+            data_dir.cleanup()
 
     # temp_dir.cleanup()
     # logging.debug("cleanup the temp dir")
