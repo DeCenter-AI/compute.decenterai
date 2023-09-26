@@ -23,6 +23,7 @@ ARG cmd="train_v2"
 ARG data_dir='/data'
 
 ENV PYTHON_COMMAND=$cmd
+
 ENV DATA_DIR=$data_dir
 ENV OUTPUT_DIR = '/outputs'
 # arg doesn't work
@@ -44,7 +45,6 @@ COPY --from=builder /app/.venv /app/venv
 
 # RUN . venv/bin/activate
 
-RUN chmod +x start.sh
 
 # ENTRYPOINT ['/app/venv/bin/python main.py',"train_v2"] FIXME: not working
 
