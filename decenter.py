@@ -1,3 +1,9 @@
+"""
+DIY: module - DECENTER, decentralized infra for AI/ML training
+ONLINE_PlAYGROUND: https://decenter-ai.streamlit.app
+
+"""
+
 import dataclasses
 import json
 from dataclasses import dataclass

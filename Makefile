@@ -142,8 +142,8 @@ lily_v1_sample:
 
 lily_v1_decenter:
 	# commented ones don't work
-	# lilypad run --template github.com/DeCenter-AI/compute.decenter-ai:main '{"train_cmd": "train_v2", "t": "linear-regression.ipynb", "i": "/app/samples/sample_v3/sample_v3.zip", "seed": 1}'
-	# lilypad run --template decenter:main  '{"train_cmd": "train_v2", "t": "linear-regression.ipynb", "i": "/app/samples/sample_v3/sample_v3.zip", "seed": 1}'
+	lilypad run --template github.com/DeCenter-AI/compute.decenter-ai:main '{"train_cmd": "train_v2", "t": "linear-regression.ipynb", "i": "/app/samples/sample_v3/sample_v3.zip", "seed": 1}'
+	lilypad run --template decenter:main  '{"train_cmd": "train_v2", "t": "linear-regression.ipynb", "i": "/app/samples/sample_v3/sample_v3.zip", "seed": 1}'
 	lilypad run --template ghcr.io/decenter-ai/compute.decenter-ai/decenter.compute.v1:main  '{"train_cmd": "train_v2", "t": "linear-regression.ipynb", "i": "/app/samples/sample_v3/sample_v3.zip", "seed": 1}'
 
 
