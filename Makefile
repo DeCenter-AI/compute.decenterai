@@ -33,7 +33,7 @@ run:
 	DATA_DIR='./data' poetry run python main.py train_v2 -t= -i=samples/sample_v3/sample_v3.zip
 
 run_cid:
-	DATA_DIR='./data' poetry run python main.py train_v2 -t=headbrain-simple-linear-regression.ipynb -i=Qmc7qvwHyZMgZC8kSkL7D2hyvM9wneHS19cm1XLCkei1JY
+	DATA_DIR='./data' poetry run python main.py train_v2 -t=linear-regression.ipynb -i=Qme1HnwLHVzRxra7mT5gRkG7WbyE4FhnGFn9inETSj33Hw
 
 
 install:

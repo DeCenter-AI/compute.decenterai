@@ -36,10 +36,11 @@ def download(cid: str, path_to_save: str) -> LighthouseFile:
 
 
 if __name__ == "__main__":
+    # TODO: get from environmetn variable
     lh = Lighthouse(token='56c91764.0d69cc79074f460c86a9a6d0601a8f65')
 
     response = lh.upload(
-        '/Users/hiro/Decenter/decenter.streamlit/compute.decenter-ai/samples/kaggle/inputs/headbrain.zip')
+        '/Users/hiro/Decenter/decenter.streamlit/compute.decenter-ai/samples/sample_v3/sample_v3.zip')
     print(response)
 
     data = response['data']
@@ -51,7 +52,7 @@ if __name__ == "__main__":
 
     sample_v3_cid = "QmP9xCDVx4N5uVNezeurdepMn9nrynpvuYVvVAZNPmYn1x"
     sample_v3_cid = upFile.hash
-    path_to_save = "./data/x.zip"
+    path_to_save = os.path.join('./data', sample_v3_cid)
 
     with open(path_to_save, 'w') as f1:
         res = lh.downloadBlob(f1.buffer, sample_v3_cid)
