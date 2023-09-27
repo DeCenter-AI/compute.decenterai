@@ -1,3 +1,10 @@
+---
+name: Bug
+about: Report a bug
+title: "bug: "
+labels: bug
+---
+
 **Bug Description:**
 
 [Describe the bug in detail here. Include any error messages, unexpected behavior, or other relevant information.]
@@ -27,14 +34,13 @@ Versions Affected:
 
 **Environment:**
 
-- [x] [Decenter-AI](https://decenter-ai.streamlit.app)
-- [ ] [Local](https://localhost:8501)
-- [ ] [Public Hosted]()
+- [ ] [Lilypad v1 Module]()
+- [ ] [Lilypad v0 Module]()
+- [ ] [Bacalhau]()
+- [ ] [Lilypad Contract v0]()
+- [ ] [Lilypad Contract v1]()
 
-_**Ignore the following for  [Decenter-AI](https://decenter-ai.streamlit.app)**_
 
-- Python Version:
-- Operating System:
 
 **Relevant Code Snippet:**
 
