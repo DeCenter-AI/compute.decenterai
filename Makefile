@@ -16,7 +16,7 @@ clean:
 gh:
 	git pull 
 	docker build -t app . 
-	docker run app
+	docker run -it app
 
 dc:
 	docker-compose down -v --rmi all
