@@ -44,6 +44,8 @@ docker run -it ghcr.io/decenter-ai/compute.decenter-ai:main -t=linear-regression
 
 ## Bacalhau
 
+Detailed live doc available over [here](https://colab.research.google.com/drive/16pVoRVdQAd4Yh73JSMJMtYG-rLEjTgWw#scrollTo=IzR8eWCh_TJN)
+
 <!-- 
 	bacalhau docker run --gpu 1 ghcr.io/bacalhau-project/examples/stable-diffusion-gpu:0.0.1 -- python main.py --o ./outputs --p "cod swimming through data"
  -->
