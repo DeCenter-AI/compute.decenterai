@@ -7,6 +7,9 @@ docker-build:
 
 .PHONY: docker docker-build clean gh it run dc test test_docker test_docker1 test_docker2
 
+docker-run:
+	docker run app -t=headbrain.ipynb -i=/app/samples/kaggle/inputs/headbrains.zip
+
 clean:
 	docker system prune -f      
 
