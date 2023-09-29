@@ -36,6 +36,7 @@
 ```
   docker run ghcr.io/decenter-ai/compute.decenter-ai/decenter.compute:main
   docker run ghcr.io/decenter-ai/compute.decenter-ai:main
+  docker run ghcr.io/decenter-ai/compute:main
 
 ```
 

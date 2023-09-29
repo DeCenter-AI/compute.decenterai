@@ -43,7 +43,7 @@ jobs:
             ${{ env.REGISTRY }}/${{env.IMAGE_NAME}}/decenter-ai.compute
             ${{ env.REGISTRY }}/${{env.IMAGE_NAME}}/compute.decenter-ai
             ${{ env.REGISTRY }}/${{env.IMAGE_NAME}}/v2.compute.decenter-ai
-            ${{ env.REGISTRY}}/${{github.repository_owner}}
+            ${{ env.REGISTRY}}/${{github.repository_owner}}/compute
 
           tags: |
             type=schedule
