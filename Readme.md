@@ -1,5 +1,10 @@
 # Decenter Compute
 
+IPFS Gateway: 
+<pre>
+www.w3s.link/ipfs/[CID] or www.ipfs.io/ipfs/[CID]
+</pre>
+
 ## Python
 
 ```
