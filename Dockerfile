@@ -33,7 +33,7 @@ ENV INPUT_DIR = '/inputs'
 
 WORKDIR /app
 
-RUN mkdir -p ${DATA_DIR}}
+RUN mkdir -p ${DATA_DIR}
 RUN mkdir -p ${INPUT_DIR}
 
 COPY . .
