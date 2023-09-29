@@ -54,7 +54,7 @@ Detailed live doc available over [here](https://colab.research.google.com/drive/
 bacalhau docker run ghcr.io/decenter-ai/compute:main
 ```
 
-Download by default
+#### Download by default
 
 ```working
 bacalhau docker run --download \
@@ -65,12 +65,31 @@ bacalhau docker run --download \
   -t=headbrain.ipynb -i=/app/samples/kaggle/inputs/headbrain.zip
 ```
 
-With Output folder mount
+#### With Output folder mount
 
 ```untested
 bacalhau docker run --download  -o ./outputs:/outputs  ghcr.io/decenter-ai/compute.decenter-ai:main -- \
   /app/venv/bin/python main.py train_v2 -t=linear-regression.ipynb -i=/app/samples/sample_v3/sample_v3.zip
 ```
+
+#### Input
+
+##### Lighthouse
+
+```
+bacalhau docker run --download \
+  --id-only \
+  --timeout 3600 \
+  --wait-timeout-secs 3600 \
+  --wait \
+  --gpu 0 \
+  --input https://gateway.lighthouse.storage/ipfs/QmRwvooN7Yfa6Gx8aVcf5cV7MAAMHmo5Q5JTt5234jf3qo  \
+  ghcr.io/decenter-ai/compute:v1.5.0 -- \
+  -t=headbrain.ipynb -i=/inputs/QmRwvooN7Yfa6Gx8aVcf5cV7MAAMHmo5Q5JTt5234jf3qo
+```
+
+##### IPFS
+
 
 ```untested
 bacalhau docker run \
