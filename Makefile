@@ -1,13 +1,11 @@
+docker:
+	docker built -t app .
+
 docker-build:
-	docker build -t decenter.ai .
-
-docker-build-v1:
 	docker build  --build-arg cmd=train_v1 -t decenter.ai.v1 .
-
-docker-build-v2:
 	docker build  --build-arg cmd=train_v2 -t decenter.ai.v2 .
 
-.PHONY: docker-build docker-build-v1 docker-build-v2 clean gh it run dc test test_docker test_docker1 test_docker2
+.PHONY: docker docker-build clean gh it run dc test test_docker test_docker1 test_docker2
 
 clean:
 	docker system prune -f      
