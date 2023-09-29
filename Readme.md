@@ -4,6 +4,19 @@
 
 ```
  python main.py train_v2 "linear-regression.ipynb" "/app/samples/sample_v3/sample_v3.zip"
+```
+
+#### Venv
+
+```
+ venv/bin/python main.py train_v2 "linear-regression.ipynb" "/app/samples/sample_v3/sample_v3.zip"
+
+ venv/bin/python -m jupyter nbconvert --execute --to html  /app/samples/sample_v3/linear-regression.ipynb
+```
+
+## Poetry
+
+```
  DATA_DIR='./data' poetry run python main.py train_v2 --train_script=linear-regression.ipynb -i=samples/sample_v3/sample_v3.zip
 ```
 
