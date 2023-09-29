@@ -79,6 +79,15 @@ bacalhau docker run --download \
   -t=headbrain.ipynb -i=/app/samples/kaggle/inputs/headbrain.zip
 ```
 
+```working
+bacalhau docker run --download \
+  --id-only \
+  --wait \
+  --gpu 0 \
+  ghcr.io/decenter-ai/compute:main -- \
+  headbrain.ipynb /app/samples/kaggle/inputs/headbrain.zip
+```
+
 #### With Output folder mount
 
 ```untested
@@ -101,6 +110,7 @@ bacalhau docker run --download \
   ghcr.io/decenter-ai/compute:v1.5.0 -- \
   -t=headbrain.ipynb -i=/inputs/QmRwvooN7Yfa6Gx8aVcf5cV7MAAMHmo5Q5JTt5234jf3qo
 ```
+
 
 ##### IPFS
 
