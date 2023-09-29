@@ -17,6 +17,8 @@ COPY pyproject.toml poetry.lock ./
 
 RUN poetry install --no-root
 
+RUN .venv/bin/python -m pip install --upgrade --force-reinstall jupyter
+
 FROM python:3.10-slim
 
 ARG cmd="train_v2"
