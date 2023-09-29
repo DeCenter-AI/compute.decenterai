@@ -28,7 +28,6 @@
 
   docker run -it app linear-regression.ipynb /app/samples/sample_v3/sample_v3.zip
   docker run -it app "linear-regression.ipynb" "/app/samples/sample_v3/sample_v3.zip"
-
 ```
 
 ## GHCR
@@ -37,12 +36,10 @@
   docker run ghcr.io/decenter-ai/compute.decenter-ai/decenter.compute:main
   docker run ghcr.io/decenter-ai/compute.decenter-ai:main
   docker run ghcr.io/decenter-ai/compute:main
-
 ```
 
 ```
 docker run -it ghcr.io/decenter-ai/compute.decenter-ai:main -t=linear-regression.ipynb -i=samples/sample_v3/sample_v3.zip
-
 ```
 
 ## Bacalhau
