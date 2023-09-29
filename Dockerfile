@@ -15,7 +15,7 @@ RUN poetry config virtualenvs.create true
 
 COPY pyproject.toml poetry.lock ./
 
-RUN poetry install --no-root
+RUN poetry install 
 
 FROM python:3.10-slim
 
