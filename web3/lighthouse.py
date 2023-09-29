@@ -14,6 +14,10 @@ class LighthouseFile:
     hash: str
     size: str
 
+    @property
+    def uploaded_url(self):
+        return f"https://gateway.lighthouse.storage/ipfs/{self.hash}"
+
 
 def upload(path: str) -> LighthouseFile:
     response = lh.upload(path)
