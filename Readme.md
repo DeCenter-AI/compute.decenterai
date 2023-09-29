@@ -6,6 +6,14 @@ In Brave: ipfs://[CID]
 In Other Browsers: www.w3s.link/ipfs/[CID] or www.ipfs.io/ipfs/[CID]
 </pre>
 
+Lilypad: 
+
+1. v0: has smart contracts with bacalhau spec
+2. v1: lilypad modules, smart contracts that can only run the lilypad modules. But lilypad modules needs to approved via PR.
+Testnet: Lalechuza
+3. v2: only module support. But very extensive support for modules via github repos.
+Testnet: Aurora
+
 ## Python
 
 ```
