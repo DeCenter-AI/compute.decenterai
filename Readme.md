@@ -24,6 +24,11 @@
 
 ```
 
+```
+docker run -it ghcr.io/decenter-ai/compute.decenter-ai:main -t=linear-regression.ipynb -i=samples/sample_v3/sample_v3.zip
+
+```
+
 ## Bacalhau
 
 ```
@@ -33,8 +38,7 @@ bacalhau docker run --gpu 1 ghcr.io/decenter-ai/compute.decenter-ai:main
 Download by default
 
 ```
-bacalhau docker run --download ghcr.io/decenter-ai/compute.decenter-ai:main -- \
-  /app/venv/bin/python main.py train_v2 -t=linear-regression.ipynb -i=/app/samples/sample_v3/sample_v3.zip
+bacalhau docker run --download ghcr.io/decenter-ai/compute.decenter-ai:main -- /app/venv/bin/python main.py train_v2 -t=linear-regression.ipynb -i=/app/samples/sample_v3/sample_v3.zip
 ```
 
 With Output folder mount
