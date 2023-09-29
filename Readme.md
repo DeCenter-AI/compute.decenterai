@@ -25,7 +25,7 @@
 ```
   docker run app '-t=linear-regression.ipynb' '-i=/app/samples/sample_v3/sample_v3.zip'
 
-  docker run app 'linear-regression.ipynb' '/app/samples/sample_v3/sample_v3.zip'
+  docker run app -it 'linear-regression.ipynb' '/app/samples/sample_v3/sample_v3.zip'
 
   docker run -it app '-t=headbrain.ipynb' '-i=/app/samples/kaggle/inputs/headbrain.zip'
 
@@ -45,6 +45,10 @@ docker run -it ghcr.io/decenter-ai/compute.decenter-ai:main -t=linear-regression
 ```
 
 ## Bacalhau
+
+<!-- 
+	bacalhau docker run --gpu 1 ghcr.io/bacalhau-project/examples/stable-diffusion-gpu:0.0.1 -- python main.py --o ./outputs --p "cod swimming through data"
+ -->
 
 ```
 bacalhau docker run --gpu 1 ghcr.io/decenter-ai/compute.decenter-ai:main
