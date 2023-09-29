@@ -26,14 +26,15 @@ ENV PYTHON_COMMAND=$cmd
 
 ENV DATA_DIR=$data_dir
 ENV OUTPUT_DIR = '/outputs'
+ENV INPUT_DIR = '/inputs'
 # arg doesn't work
 
 # VOLUME ["/data"]
 
 WORKDIR /app
 
-RUN mkdir -p $data_dir
-
+RUN mkdir -p ${DATA_DIR}}
+RUN mkdir -p ${INPUT_DIR}
 
 COPY . .
 
