@@ -24,17 +24,18 @@
 
 ```
   docker run app '-t=linear-regression.ipynb' '-i=/app/samples/sample_v3/sample_v3.zip'
+  <!-- docker run -it app '-t=headbrain.ipynb' '-i=/app/samples/kaggle/inputs/headbrain.zip' -->
 
-  docker run app -it 'linear-regression.ipynb' '/app/samples/sample_v3/sample_v3.zip'
+  docker run -it app linear-regression.ipynb /app/samples/sample_v3/sample_v3.zip
+  docker run -it app "linear-regression.ipynb" "/app/samples/sample_v3/sample_v3.zip"
 
-  docker run -it app '-t=headbrain.ipynb' '-i=/app/samples/kaggle/inputs/headbrain.zip'
 
 ```
 
 ## GHCR
 
 ```
-  docker run ghcr.io/decenter-ai/compute.decenter-ai/decenter.compute:sha-6c846a0
+  docker run ghcr.io/decenter-ai/compute.decenter-ai/decenter.compute:main
   docker run ghcr.io/decenter-ai/compute.decenter-ai:main
 
 ```
