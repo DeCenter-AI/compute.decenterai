@@ -52,6 +52,7 @@ docker run -it ghcr.io/decenter-ai/compute.decenter-ai:main -t=linear-regression
 
 ```
 bacalhau docker run --gpu 1 ghcr.io/decenter-ai/compute.decenter-ai:main
+bacalhau docker run --gpu 1 ghcr.io/decenter-ai:main
 ```
 
 Download by default
