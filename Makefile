@@ -15,11 +15,11 @@ clean:
 
 run:
 	# DATA_DIR='$(pwd)/data' poetry run python main.py train_v2 --train_script=linear-regression.ipynb -i=samples/sample_v3/sample_v3.zip
-	DATA_DIR='./data' poetry run python main.py train_v2 --train_script=linear-regression.ipynb -i=samples/sample_v3/sample_v3.zip
+	DATA_DIR='./data' OUTPUT_DIR='./outputs' poetry run python main.py train_v2 --train_script=linear-regression.ipynb -i=samples/sample_v3/sample_v3.zip
 	# DATA_DIR='./data' poetry run python main.py train_v2 -t=linear-regression.ipynb -i=samples/sample_v3/sample_v3.zip
 
 run_cid:
-	DATA_DIR='./data' poetry run python main.py train_v2 -t=linear-regression.ipynb -i=Qme1HnwLHVzRxra7mT5gRkG7WbyE4FhnGFn9inETSj33Hw
+	DATA_DIR='./data'  OUTPUT_DIR='./outputs' poetry run python main.py train_v2 -t=linear-regression.ipynb -i=Qme1HnwLHVzRxra7mT5gRkG7WbyE4FhnGFn9inETSj33Hw
 
 dc:
 	docker-compose down -v --rmi all

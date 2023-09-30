@@ -46,7 +46,7 @@ def train(train_script: str, requirements_txt: str = None, data_dir=DATA_DIR):
         )
         if path_not_found(requirements_path):
             logging.critical(
-                f"requirements path- {requirements_path} not found"
+                f"requirements path- {requirements_path} not found",
             )
         else:
             install_dependencies(
@@ -88,7 +88,8 @@ def train(train_script: str, requirements_txt: str = None, data_dir=DATA_DIR):
     logging.error(result.stderr)
 
     with open(os.path.join(data_dir, "stdout"), "w") as f1, open(
-        os.path.join(data_dir, "stderr"), "w"
+        os.path.join(data_dir, "stderr"),
+        "w",
     ) as f2:
         f1.write(result.stdout)
         f2.write(result.stderr)
@@ -98,7 +99,9 @@ def train(train_script: str, requirements_txt: str = None, data_dir=DATA_DIR):
 
 
 def train_v2(
-    train_script: str, input_archive: str, requirements_txt: str = None
+    train_script: str,
+    input_archive: str,
+    requirements_txt: str = None,
 ):
     logging.info(f"start {datetime.datetime.utcnow()}")
 
@@ -159,6 +162,6 @@ if __name__ == "__main__":
 
     logging.basicConfig(level=logging.INFO)
 
-    # fire.Fire(train, 'train', 'Train')
-    # fire.Fire(train_v2, 'train_v2', 'Train v2')
+    # fire.Fire(train, "train", "Train")
+    # fire.Fire(train_v2, "train_v2", "Train v2")
     fire.Fire({"train": train, "train_v2": train_v2})

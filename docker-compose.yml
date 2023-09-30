@@ -3,6 +3,7 @@ services:
   decenter.train_v2:
     environment:
       - DATA_DIR='/data'
+      - OUTPUT_DIR='/outputs'
     build:
       context: .
       dockerfile: Dockerfile
@@ -10,7 +11,7 @@ services:
         - cmd=train_v2
     volumes:
       - ./data:/data
-      - ./outputs:/app/outputs
+      - ./outputs:/outputs
 
     healthcheck:
       test:

@@ -5,6 +5,8 @@ import shutil
 import subprocess
 import sys
 
+import zipfile
+
 from icecream import ic
 
 
@@ -101,3 +103,18 @@ def archive_directory(
     ic(created_archive_loc)
 
     return created_archive_loc
+
+
+def archive_directory_custom(output_archive_path, dir_to_archive):
+    with zipfile.ZipFile(
+        output_archive_path,
+        "w",
+        zipfile.ZIP_DEFLATED,
+    ) as zipf:
+        for root, dirs, files in os.walk(dir_to_archive):
+            for file in files:
+                file_path = os.path.join(root, file)
+                zipf.write(
+                    file_path,
+                    os.path.relpath(file_path, dir_to_archive),
+                )
