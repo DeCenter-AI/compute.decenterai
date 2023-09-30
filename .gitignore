@@ -72,5 +72,5 @@ You can modify this file as per your specific requirements.
 node_modules/
 
 *.bin
-./outputs/
+outputs/*.zip
 data/
