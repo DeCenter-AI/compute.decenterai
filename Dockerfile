@@ -15,7 +15,7 @@ RUN poetry config virtualenvs.create true
 
 COPY pyproject.toml poetry.lock ./
 
-RUN poetry install 
+RUN poetry install
 
 FROM python:3.10-slim
 
@@ -25,8 +25,9 @@ ARG data_dir='/data'
 ENV PYTHON_COMMAND=$cmd
 
 ENV DATA_DIR=$data_dir
-ENV OUTPUT_DIR = '/outputs'
-ENV INPUT_DIR = '/inputs'
+ENV OUTPUT_DIR='/outputs'
+ENV INPUT_DIR='/inputs'
+# remember not spaces b/w =
 # arg doesn't work
 
 # VOLUME ["/data"]
