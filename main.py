@@ -17,8 +17,7 @@ DATA_DIR = os.getenv('DATA_DIR', '/data')
 JUPYTER_NOTEBOOK: Final[str] = '.ipynb'
 PYTHON: Final[str] = '.py'
 
-output_dir: Final[str] = os.getenv(
-    'OUTPUT_DIR', os.path.join(os.getcwd(), 'outputs'))
+output_dir: Final[str] = os.getenv('OUTPUT_DIR','/outputs')
 
 EXECUTION_FRAMEWORK: str
 
