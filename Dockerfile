@@ -17,8 +17,6 @@ COPY pyproject.toml poetry.lock ./
 
 RUN poetry install
 
-RUN .venv/bin/python -m pip install --upgrade --force-reinstall jupyter
-
 FROM python:3.10-slim
 
 ARG cmd="train_v2"
@@ -62,6 +60,8 @@ COPY --from=builder /app/.venv /app/venv
 # HEALTHCHECK ['']
 
 # ENTRYPOINT "/app/venv/bin/python main.py $PYTHON_COMMAND"
+RUN venv/bin/python -m pip install --upgrade --force-reinstall jupyter
+# required
 
 ENTRYPOINT ["/app/venv/bin/python","main.py","train_v2"]
 
