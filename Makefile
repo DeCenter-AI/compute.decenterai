@@ -5,11 +5,15 @@ install:
 	pip install poetry
 	poetry install --no-root
 
+dev-setup:
+	make install
+	pre-commit install
+
 clean:
 	rm -rf ./data/*
 	rm -rf ./outputs/*
 
-run: 
+run:
 	# DATA_DIR='$(pwd)/data' poetry run python main.py train_v2 --train_script=linear-regression.ipynb -i=samples/sample_v3/sample_v3.zip
 	DATA_DIR='./data' poetry run python main.py train_v2 --train_script=linear-regression.ipynb -i=samples/sample_v3/sample_v3.zip
 	# DATA_DIR='./data' poetry run python main.py train_v2 -t=linear-regression.ipynb -i=samples/sample_v3/sample_v3.zip
@@ -42,8 +46,8 @@ docker-build:
 docker-clean:
 	docker system prune -f
 gh:
-	git pull 
-	docker build -t app . 
+	git pull
+	docker build -t app .
 	docker run -it app
 
 ghcr:
@@ -54,11 +58,11 @@ ghcr:
 .PHONY: docker docker-build docker-clean clean gh it run dc test
 
 sample_b_6:
-# FIXME: doens't work need to override entrypoint as 
+# FIXME: doens't work need to override entrypoint as
 	bacalhau docker run \
 	 -i ipfs://QmP9xCDVx4N5uVNezeurdepMn9nrynpvuYVvVAZNPmYn1x:/data/simple-linear-regression.zip ghcr.io/decenter-ai/compute.decenter-ai/decenter.compute.v1:main \
 	  -- '-t=simple-linear-regression.ipynb -i=/data/simple-linear-regression.zip'
-# TODO: put in the ipfs swarm nodes of lighthouse: 
+# TODO: put in the ipfs swarm nodes of lighthouse:
 #  --ipfs-swarm-addrs=(default "/ip4/35.245.115.191/tcp/1235/p2p/QmdZQ7ZbhnvWY1J12XYKGHApJ6aufKyLNSvf8jZBrBaAVL,/ip4/35.245.61.251/tcp/1235/p2p/QmXaXu9N5GNe
 # tatsvwnTfQqNtSeKAD6uCmarbh3LMRYAcF,/ip4/35.245.251.239/tcp/1235/p2p/QmYgxZiySj3MRkwLSL4X2MF5F9f2PMhAE3LV49XkfNL1o3")
 
@@ -77,7 +81,7 @@ sample_b_7:
 
 
 sample_b_8_https:
-# TOOD: working 
+# TOOD: working
 	bacalhau docker run \
 	 --download \
 	 -o ./outputs:/outputs \
@@ -97,7 +101,7 @@ lily_sample_2:
 	# Hack: pass in different seeds
 	# TODO: enter https://ipfs.io/ipfs/<resultCID> or ipfs://<resultCID>
 	# doc: https://docs.lilypadnetwork.org/lilypad-v1-examples/stable-diffusion
-	
+
 
 lily_decenter:
 	lilypad run github.com/DeCenter-AI/compute.decenter-ai:main '{"train_cmd": "train_v2", "t": "linear-regression.ipynb", "i": "/app/samples/sample_v3/sample_v3.zip", "seed": 1}'
