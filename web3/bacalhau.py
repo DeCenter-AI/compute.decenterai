@@ -1,5 +1,6 @@
 import json, glob, os, multiprocessing, shutil, subprocess, tempfile, time
 
+
 # checkStatusOfJob checks the status of a Bacalhau job
 def checkStatusOfJob(job_id: str) -> str:
     assert len(job_id) > 0
@@ -51,7 +52,7 @@ def getResultsFromJob(job_id: str) -> str:
     assert len(job_id) > 0
     temp_dir = tempfile.mkdtemp()
     print("getting results for job: %s" % job_id)
-    for i in range(0, 5): # try 5 times
+    for i in range(0, 5):  # try 5 times
         p = subprocess.run(
             [
                 "bacalhau",
@@ -121,6 +122,7 @@ def main(file: str, num_files: int = -1):
             for f in csv_file:
                 print("moving %s to results" % f)
                 shutil.move(f, "results")
+
 
 if __name__ == "__main__":
     main("hashes.txt", 10)

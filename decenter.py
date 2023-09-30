@@ -25,9 +25,10 @@ class App:
         return json_str
 
     @staticmethod
-    def loads(json_str: str) -> 'App':
+    def loads(json_str: str) -> "App":
         args = json.loads(json_str)
         return App(**args)
+
     # def to_dict(self):
     #     return {"train_cmd": self.train_cmd, "t": self.t, }
 
@@ -49,14 +50,9 @@ def _decenter(params: str):
 
     return {
         "APIVersion": "V1beta1",
-        "Metadata": {
-            "CreatedAt": "0001-01-01T00:00:00Z",
-            "Requester": {}
-        },
+        "Metadata": {"CreatedAt": "0001-01-01T00:00:00Z", "Requester": {}},
         "Spec": {
-            "Deal": {
-                "Concurrency": 1
-            },
+            "Deal": {"Concurrency": 1},
             "Docker": {
                 "Entrypoint": [
                     # "bash", "-c",
@@ -72,35 +68,24 @@ def _decenter(params: str):
                     "OUTPUT_DIR=/outputs/",
                     "DATA_DIR=/data",
                     #  FIXME: use appropriate values , this is the default val
-
-                ]
+                ],
             },
             "Engine": "Docker",
-            "Language": {
-                "JobContext": {}
-            },
-            "Network": {
-                "Type": "None"
-            },
-            "PublisherSpec": {
-                "Type": "Estuary"
-            },
-            "Resources": {
-                "GPU": "1"
-            },
+            "Language": {"JobContext": {}},
+            "Network": {"Type": "None"},
+            "PublisherSpec": {"Type": "Estuary"},
+            "Resources": {"GPU": "1"},
             "Timeout": 1800,
             "Verifier": "Noop",
-            "Wasm": {
-                "EntryModule": {}
-            },
+            "Wasm": {"EntryModule": {}},
             "outputs": [
                 {
                     "Name": "outputs",
                     "StorageSource": "IPFS",
-                    "path": "/outputs"
+                    "path": "/outputs",
                 }
-            ]
-        }
+            ],
+        },
     }
 
 

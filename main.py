@@ -12,19 +12,19 @@ from web3 import lighthouse
 from web3.cid import is_cid
 
 python_repl = sys.executable
-DATA_DIR = os.getenv('DATA_DIR', '/data')
+DATA_DIR = os.getenv("DATA_DIR", "/data")
 
-JUPYTER_NOTEBOOK: Final[str] = '.ipynb'
-PYTHON: Final[str] = '.py'
+JUPYTER_NOTEBOOK: Final[str] = ".ipynb"
+PYTHON: Final[str] = ".py"
 
-output_dir: Final[str] = os.getenv('OUTPUT_DIR','/outputs')
+output_dir: Final[str] = os.getenv("OUTPUT_DIR", "/outputs")
 
 EXECUTION_FRAMEWORK: str
 
 
 def path_not_found(path: str):
     if not os.path.exists(path):
-        logging.warning(f'{path} not found')
+        logging.warning(f"{path} not found")
         return True
 
     return False
@@ -46,7 +46,8 @@ def train(train_script: str, requirements_txt: str = None, data_dir=DATA_DIR):
         )
         if path_not_found(requirements_path):
             logging.critical(
-                f"requirements path- {requirements_path} not found")
+                f"requirements path- {requirements_path} not found"
+            )
         else:
             install_dependencies(
                 python_repl,
@@ -66,12 +67,12 @@ def train(train_script: str, requirements_txt: str = None, data_dir=DATA_DIR):
             training_cmd = [python_repl, train_script]
         case ".ipynb":
             EXECUTION_FRAMEWORK = JUPYTER_NOTEBOOK
-            cmd_string = f'jupyter nbconvert --execute --to html --output {train_script} {train_script}'
-            training_cmd = cmd_string.split(' ')
-            training_cmd = [python_repl, '-m'] + training_cmd
+            cmd_string = f"jupyter nbconvert --execute --to html --output {train_script} {train_script}"
+            training_cmd = cmd_string.split(" ")
+            training_cmd = [python_repl, "-m"] + training_cmd
 
         case _:
-            logging.critical('invalid training script')
+            logging.critical("invalid training script")
             sys.exit(1)
 
     logging.info(f"train cmd - {training_cmd}")
@@ -86,7 +87,9 @@ def train(train_script: str, requirements_txt: str = None, data_dir=DATA_DIR):
     logging.info(result.stdout)
     logging.error(result.stderr)
 
-    with open(os.path.join(data_dir, 'stdout'), 'w') as f1, open(os.path.join(data_dir, 'stderr'), 'w') as f2:
+    with open(os.path.join(data_dir, "stdout"), "w") as f1, open(
+        os.path.join(data_dir, "stderr"), "w"
+    ) as f2:
         f1.write(result.stdout)
         f2.write(result.stderr)
         # TODO: pass files directly to subprocess...
@@ -94,23 +97,27 @@ def train(train_script: str, requirements_txt: str = None, data_dir=DATA_DIR):
     return True
 
 
-def train_v2(train_script: str, input_archive: str, requirements_txt: str = None):
+def train_v2(
+    train_script: str, input_archive: str, requirements_txt: str = None
+):
     logging.info(f"start {datetime.datetime.utcnow()}")
 
     data_dir = DATA_DIR
     if not os.path.exists(data_dir):
-        logging.warning(f'data dir {data_dir} doesnt exists')
+        logging.warning(f"data dir {data_dir} doesnt exists")
 
-        logging.info('creating temp directory for data dir')
+        logging.info("creating temp directory for data dir")
 
-        temp_dir = tempfile.TemporaryDirectory(prefix="decenter-ai-",
-                                               suffix="-training-working-dir", )
+        temp_dir = tempfile.TemporaryDirectory(
+            prefix="decenter-ai-",
+            suffix="-training-working-dir",
+        )
         data_dir = temp_dir.name
 
     print("data_dir is ", data_dir)
 
     if is_cid(input_archive):
-        new_archive = os.path.join(data_dir, f'{input_archive}.zip')
+        new_archive = os.path.join(data_dir, f"{input_archive}.zip")
         f2 = lighthouse.download(input_archive, new_archive)
         input_archive = os.path.join(data_dir, f2.name)
         os.rename(new_archive, input_archive)
@@ -154,7 +161,4 @@ if __name__ == "__main__":
 
     # fire.Fire(train, 'train', 'Train')
     # fire.Fire(train_v2, 'train_v2', 'Train v2')
-    fire.Fire({
-        'train': train,
-        'train_v2': train_v2
-    })
+    fire.Fire({"train": train, "train_v2": train_v2})
