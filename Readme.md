@@ -121,9 +121,25 @@ bacalhau docker run \
    -- /app/venv/bin/python main.py train_v2 -t=simple-linear-regression.ipynb -i=/data/simple-linear-regression.zip
 ```
 
-## Lilypad Module
+## Lilypad Module v1
 
+```sample
+lilypad run cowsay:v0.0.1 "hello lilypad"
+```
+```bash
+lilypad run decenter:main 
+```
+
+
+## Lilypad Module v2
+
+```
+lilypad run --template cowsay:v0.0.1 --params "hello lilypad"
 ```
 
 ```
+lilypad run --template decenter:main 
 
+lilypad run --template decenter:main --params "{"t":"headbrain.ipynb", "i":"/app/samples/kaggle/inputs/headbrain.zip"}"
+
+```
