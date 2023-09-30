@@ -142,4 +142,16 @@ lilypad run --template decenter:main
 
 lilypad run --template decenter:main --params "{"t":"headbrain.ipynb", "i":"/app/samples/kaggle/inputs/headbrain.zip"}"
 
+
+lilypad run --template decenter:main --params '{"t":"linear-regression.ipynb", "i":"/app/samples/sample_v3/sample_v3.zip"}'
+
 ```
+
+
+
+<!-- 
+Running jupyter nb in bacalhau
+
+https://github.com/bacalhau-project/examples/blob/main/workload-onboarding/Running-Jupyter-Notebook/index.ipynb
+
+ -->

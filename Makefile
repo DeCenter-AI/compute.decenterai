@@ -5,6 +5,10 @@ install:
 	pip install poetry
 	poetry install --no-root
 
+clean:
+	rm -rf ./data/*
+	rm -rf ./outputs/*
+
 run: 
 	# DATA_DIR='$(pwd)/data' poetry run python main.py train_v2 --train_script=linear-regression.ipynb -i=samples/sample_v3/sample_v3.zip
 	DATA_DIR='./data' poetry run python main.py train_v2 --train_script=linear-regression.ipynb -i=samples/sample_v3/sample_v3.zip
@@ -12,9 +16,6 @@ run:
 
 run_cid:
 	DATA_DIR='./data' poetry run python main.py train_v2 -t=linear-regression.ipynb -i=Qme1HnwLHVzRxra7mT5gRkG7WbyE4FhnGFn9inETSj33Hw
-
-clean:
-	docker system prune -f      
 
 dc:
 	docker-compose down -v --rmi all
@@ -38,6 +39,8 @@ docker-build:
 	docker build  --build-arg cmd=train_v1 -t decenter.ai.v1 .
 	docker build  --build-arg cmd=train_v2 -t decenter.ai.v2 .
 
+docker-clean:
+	docker system prune -f
 gh:
 	git pull 
 	docker build -t app . 
@@ -48,7 +51,7 @@ ghcr:
 	docker run ghcr.io/nasfame/bacalhau-fvm-nft:latest python main.py --p 'Hiro'
 
 
-.PHONY: docker docker-build clean gh it run dc test 
+.PHONY: docker docker-build docker-clean clean gh it run dc test
 
 sample_b_6:
 # FIXME: doens't work need to override entrypoint as 
