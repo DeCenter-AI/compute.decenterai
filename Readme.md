@@ -1,12 +1,12 @@
 # Decenter Compute
 
-IPFS Gateway: 
+IPFS Gateway:
 <pre>
 In Brave: ipfs://[CID]
 In Other Browsers: www.w3s.link/ipfs/[CID] or www.ipfs.io/ipfs/[CID]
 </pre>
 
-Lilypad: 
+Lilypad:
 
 1. v0: has smart contracts with bacalhau spec
 2. v1: lilypad modules, smart contracts that can only run the lilypad modules. But lilypad modules needs to approved via PR.
@@ -60,7 +60,7 @@ docker run -it ghcr.io/decenter-ai/compute.decenter-ai:main -t=linear-regression
 
 Detailed live doc available over [here](https://colab.research.google.com/drive/16pVoRVdQAd4Yh73JSMJMtYG-rLEjTgWw#scrollTo=IzR8eWCh_TJN)
 
-<!-- 
+<!--
 	bacalhau docker run --gpu 1 ghcr.io/bacalhau-project/examples/stable-diffusion-gpu:0.0.1 -- python main.py --o ./outputs --p "cod swimming through data"
  -->
 
@@ -127,7 +127,7 @@ bacalhau docker run \
 lilypad run cowsay:v0.0.1 "hello lilypad"
 ```
 ```bash
-lilypad run decenter:main 
+lilypad run decenter:main
 ```
 
 
@@ -138,9 +138,9 @@ lilypad run --template cowsay:v0.0.1 --params "hello lilypad"
 ```
 
 ```
-lilypad run --template decenter:main 
+lilypad run --template decenter:main
 
-lilypad run --template decenter:main --params "{"t":"headbrain.ipynb", "i":"/app/samples/kaggle/inputs/headbrain.zip"}"
+lilypad run --template decenter:main --params '{"t":"headbrain.ipynb", "i":"/app/samples/kaggle/inputs/headbrain.zip"}'
 
 
 lilypad run --template decenter:main --params '{"t":"linear-regression.ipynb", "i":"/app/samples/sample_v3/sample_v3.zip"}'
@@ -149,7 +149,7 @@ lilypad run --template decenter:main --params '{"t":"linear-regression.ipynb", "
 
 
 
-<!-- 
+<!--
 Running jupyter nb in bacalhau
 
 https://github.com/bacalhau-project/examples/blob/main/workload-onboarding/Running-Jupyter-Notebook/index.ipynb
