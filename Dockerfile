@@ -41,7 +41,7 @@ RUN mkdir -p ${OUTPUT_DIR}
 COPY . .
 
 # Copy dependencies from the builder stage
-# COPY --from=builder /usr/local/lib/python3.10/site-packages /usr/local/lib/python3.10/site-packages
+COPY --from=builder /usr/local/lib/python3.10/site-packages /usr/local/lib/python3.10/site-packages
 COPY --from=builder /app/.venv /app/venv
 
 # COPY samples ${data_dir} Don't do we are zipping the data dir
@@ -60,8 +60,8 @@ COPY --from=builder /app/.venv /app/venv
 # HEALTHCHECK ['']
 
 # ENTRYPOINT "/app/venv/bin/python main.py $PYTHON_COMMAND"
-RUN venv/bin/python -m pip install --upgrade --force-reinstall jupyter
-# required
+# RUN venv/bin/python -m pip install --upgrade --force-reinstall jupyter
+# FIXME: remove if working
 
 ENTRYPOINT ["/app/venv/bin/python","main.py","train_v2"]
 
