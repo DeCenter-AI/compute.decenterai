@@ -155,3 +155,10 @@ Running jupyter nb in bacalhau
 https://github.com/bacalhau-project/examples/blob/main/workload-onboarding/Running-Jupyter-Notebook/index.ipynb
 
  -->
+
+
+### Generate lilypad_module
+
+```
+bacalhau  describe 43729651 --json | jq .Job
+```
