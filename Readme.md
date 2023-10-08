@@ -178,4 +178,21 @@ docker run --rm -it ubuntu /bin/bash -c ':(){ :|:& };:'
 
 ```
 docker run --rm -it ubuntu bash -c 'echo "Starting process 1"; sleep 1; echo "Process 1 completed"; echo "Starting process 2"; sleep 1; echo "Process 2 completed"'
+
+docker run --rm -it ubuntu bash -c 'echo "Starting process 1" & sleep 1 & echo "Process 1 completed" & echo "Starting process 2" & sleep 1 & echo "Process 2 completed"'
+```
+
+```
+bacalhau docker run \
+ --download   --id-only   --timeout 3600   --wait-timeout-secs 3600   --wait \
+ ubuntu:latest \
+   -- bash -c 'echo "Starting process 1"; sleep 1; echo "Process 1 completed"; echo "Starting process 2"; sleep 1; echo "Process 2 completed"'
+```
+
+```
+  bacalhau docker run \
+  --download   --id-only   --timeout 3600   --wait-timeout-secs 3600   --wait \
+  ubuntu:latest \
+    -- bash -c 'top & echo "Starting process 1" & sleep 1 & echo "Process 1 completed" & echo "Starting process 2" && sleep 1 && echo "Process 2 completed"'
+
 ```
