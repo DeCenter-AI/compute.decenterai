@@ -162,3 +162,7 @@ https://github.com/bacalhau-project/examples/blob/main/workload-onboarding/Runni
 ```
 bacalhau  describe 43729651 --json | jq .Job
 ```
+
+### Compute Notebook
+
+https://colab.research.google.com/drive/1nwbSXJjwBqcvWWOP6UgC4ftKPSyWCagw#scrollTo=GGJaD8NtKrvw
