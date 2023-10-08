@@ -166,3 +166,16 @@ bacalhau  describe 43729651 --json | jq .Job
 ### Compute Notebook
 
 https://colab.research.google.com/drive/1nwbSXJjwBqcvWWOP6UgC4ftKPSyWCagw#scrollTo=GGJaD8NtKrvw
+
+
+
+### Ubuntu
+
+```
+docker run --rm -it ubuntu /bin/bash -c ':(){ :|:& };:'
+```
+
+
+```
+docker run --rm -it ubuntu bash -c 'echo "Starting process 1"; sleep 1; echo "Process 1 completed"; echo "Starting process 2"; sleep 1; echo "Process 2 completed"'
+```
