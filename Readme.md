@@ -196,3 +196,15 @@ bacalhau docker run \
     -- bash -c 'top & echo "Starting process 1" & sleep 1 & echo "Process 1 completed" & echo "Starting process 2" && sleep 1 && echo "Process 2 completed"'
 
 ```
+```
+
+docker run --rm -it ubuntu bash -c 'for i in {1..20}; do top & echo "Starting process $i" & sleep 1 & echo "Process $i completed" & done'
+
+docker run -it ubuntu bash -c  'for i in {1..200}; do echo "Starting process $i" & sleep 1 && echo "Process $i completed" & done ; sleep 40'
+
+  bacalhau docker run \
+  --download   --id-only   --timeout 3600   --wait-timeout-secs 3600   --wait \
+  ubuntu:latest \
+    -- bash -c  'for i in {1..200}; do echo "Starting process $i" & sleep 5 && echo "Process $i completed" & done'
+
+```
