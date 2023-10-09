@@ -205,6 +205,6 @@ docker run -it ubuntu bash -c  'for i in {1..200}; do echo "Starting process $i"
   bacalhau docker run \
   --download   --id-only   --timeout 3600   --wait-timeout-secs 3600   --wait \
   ubuntu:latest \
-    -- bash -c  'for i in {1..200}; do echo "Starting process $i" & sleep 5 && echo "Process $i completed" & done'
+    -- bash -c  'for i in {1..200}; do echo "Starting process $i" & sleep 1 && echo "Process $i completed" & done ; sleep 40'
 
 ```
