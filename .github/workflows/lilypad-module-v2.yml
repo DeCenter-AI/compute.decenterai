@@ -45,6 +45,7 @@ jobs:
         run: |
           echo "The current branch is: ${{ github.ref }}"
           echo "The current branch is ${GITHUB_REF_NAME}"
+          echo "The current branch is ${{github.ref_name}}"
 
       # - name: Commit & Push changes
       #   uses: actions-js/push@master
@@ -66,6 +67,6 @@ jobs:
           # commit_user_name: Nasfame
           # branch:
           # message: 'chore: autopublish ${date}'
-          # branch: 'main'
+          branch: ${{github.ref_name}}
           create_branch: true
 # https://docs.github.com/en/actions/learn-github-actions/variables
