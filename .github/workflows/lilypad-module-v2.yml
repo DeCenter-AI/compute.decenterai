@@ -51,3 +51,4 @@ jobs:
           github_token: ${{ github.token }}
           # branch: ${{}}
           # message: 'chore: autopublish ${date}'
+          message: "chore: lilypad module v2 on ${date}"
