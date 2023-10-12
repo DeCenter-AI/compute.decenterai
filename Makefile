@@ -123,6 +123,7 @@ lily_v1_decenter:
 lilypad_v2:
 	lilypad run cowsay:v0.0.1 -i Message="moo"
 	lilypad run github.com/DeCenter-AI/compute.decenter-ai:v1.6.0-alpha
+	lilypad run github.com/DeCenter-AI/compute.decenter-ai:feat/lilypad-module-v2
 
 
 

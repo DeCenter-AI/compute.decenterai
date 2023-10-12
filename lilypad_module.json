@@ -35,7 +35,7 @@
       "Network": {
         "Type": "None"
       },
-      "Timeout": 3600,
+      "Timeout": 5000,
       "Inputs": [
         {
           "StorageSource": "urlDownload",
