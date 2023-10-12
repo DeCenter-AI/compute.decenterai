@@ -41,8 +41,13 @@ jobs:
       #   run: |
       #     git push
 
+      - name: Get branch name
+        run: |
+          echo "The current branch is: ${{ github.ref }}"
+
       - name: Commit & Push changes
         uses: actions-js/push@master
         with:
           github_token: ${{ github.token }}
+          # branch: ${{}}
           # message: 'chore: autopublish ${date}'
