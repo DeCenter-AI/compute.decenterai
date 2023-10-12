@@ -125,6 +125,8 @@ lilypad_v2:
 	lilypad run github.com/DeCenter-AI/compute.decenter-ai:v1.6.0-alpha
 	lilypad run github.com/DeCenter-AI/compute.decenter-ai:feat/lilypad-module-v2
 
+	# git tag -a v1.6.0-beta.1 -m "just rolled out lilypad v2 module"
+	git tag -a v1.6.0-beta.2 -m "just rolled out lilypad v2 module" && git push --tags
 
 
 
