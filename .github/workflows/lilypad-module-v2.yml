@@ -44,14 +44,29 @@ jobs:
       - name: Get branch name
         run: |
           echo "The current branch is: ${{ github.ref }}"
+          echo "The current branch is ${{github.base_ref}}"
+
+      # - name: Commit & Push changes
+      #   uses: actions-js/push@master
+      #   with:
+      #     github_token: ${{ github.token }}
+      #     file_pattern: "lilypad_module.json.tmpl"
+      #     # branch:
+      #     # message: 'chore: autopublish ${date}'
+      #     message: "chore: lilypad module v2 on ${date}"
+      #     branch: 'main'
+      #     create_branch: true
 
       - name: Commit & Push changes
-        uses: actions-js/push@master
+        uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          github_token: ${{ github.token }}
+          repository: .
+          commit_message: "chore: lilypad module v2 on ${date}"
           file_pattern: "lilypad_module.json.tmpl"
+          # commit_user_name: Nasfame
           # branch:
           # message: 'chore: autopublish ${date}'
-          message: "chore: lilypad module v2 on ${date}"
-          branch: 'main'
+          # branch: 'main'
           create_branch: true
+
+# https://docs.github.com/en/actions/learn-github-actions/variables
