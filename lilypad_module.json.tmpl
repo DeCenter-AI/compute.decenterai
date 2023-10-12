@@ -5,33 +5,53 @@
     "ram": 1000
   },
   "job": {
-    "APIVersion": "V1beta2",
-    "Spec": {
-      "Deal": {
-        "Concurrency": 1
-      },
-      "Docker": {
-        "Entrypoint": [
-          "/app/venv/bin/python",
-          "main.py",
-          "train_v2",
-          "-t=simple-linear-regression.ipynb",
-          "-i=/app/samples/kaggle/inputs/simple-linear-regression.zip"
+  "APIVersion": "V1beta2",
+  "Spec": {
+    "EngineSpec": {
+      "Type": "docker",
+      "Params": {
+        "Entrypoint": null,
+        "EnvironmentVariables": [],
+        "Image": "ghcr.io/decenter-ai/compute:v1.5.5",
+        "Parameters": [
+          "headbrain.ipynb",
+          "/inputs/QmRwvooN7Yfa6Gx8aVcf5cV7MAAMHmo5Q5JTt5234jf3qo"
         ],
-        "Image": "ghcr.io/decenter-ai/compute.decenter-ai/decenter.compute.v1:main"
-      },
-      "Engine": "Docker",
-      "Network": {
-        "Type": "None"
-      },
-      "PublisherSpec": {
-        "Type": "Estuary"
-      },
-      "Resources": {
-        "GPU": "1"
-      },
-      "Timeout": 1800,
-      "Verifier": "Noop"
+        "WorkingDirectory": ""
+      }
+    },
+    "PublisherSpec": {
+      "Type": "ipfs"
+    },
+    "Docker": {},
+    "Wasm": {
+      "EntryModule": {}
+    },
+    "Resources": {
+      "CPU": "2",
+      "GPU": "0"
+    },
+    "Network": {
+      "Type": "None"
+    },
+    "Timeout": 3600,
+    "Inputs": [
+      {
+        "StorageSource": "urlDownload",
+        "Name": "https://gateway.lighthouse.storage/ipfs/QmRwvooN7Yfa6Gx8aVcf5cV7MAAMHmo5Q5JTt5234jf3qo",
+        "URL": "https://gateway.lighthouse.storage/ipfs/QmRwvooN7Yfa6Gx8aVcf5cV7MAAMHmo5Q5JTt5234jf3qo",
+        "Path": "/inputs"
+      }
+    ],
+    "Outputs": [
+      {
+        "Name": "outputs",
+        "Path": "/outputs"
+      }
+    ],
+    "Deal": {
+      "Concurrency": 1
     }
   }
+}
 }
