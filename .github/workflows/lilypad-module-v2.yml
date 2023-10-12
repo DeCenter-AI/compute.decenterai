@@ -32,10 +32,10 @@ jobs:
       - name: Create a lilypad tmpl
         run: cp lilypad_module.json lilypad_module.json.tmpl
 
-      - name: Commit
-        run: |
-          git add lilypad_module.json.tmpl
-          git commit -m "chore: lilypad module v2"
+      # - name: Commit
+      #   run: |
+      #     git add lilypad_module.json.tmpl
+      #     git commit -m "chore: lilypad module v2"
 
       # - name: Push
       #   run: |
