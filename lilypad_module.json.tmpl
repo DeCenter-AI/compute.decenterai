@@ -39,7 +39,7 @@
       "Inputs": [
         {
           "StorageSource": "urlDownload",
-          "Name": "download Input source",
+          "Name": "inputs",
           "URL": "https://gateway.lighthouse.storage/ipfs/{{.inputCid}}",
           "Path": "/inputs"
         }
@@ -47,6 +47,7 @@
       "Outputs": [
         {
           "Name": "outputs",
+          "StorageSource": "IPFS",
           "Path": "/outputs"
         }
       ],
