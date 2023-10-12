@@ -14,8 +14,8 @@
           "EnvironmentVariables": [],
           "Image": "ghcr.io/decenter-ai/compute:v1.5.6",
           "Parameters": [
-            "headbrain.ipynb",
-            "/inputs/QmRwvooN7Yfa6Gx8aVcf5cV7MAAMHmo5Q5JTt5234jf3qo"
+            {{if .trainScript}}{{.trainScript}}{{else}}"Kindly provide trainScript like lilypad run github.com/DeCenter-AI/compute.decenter-ai -i trainScript=headbrain.ipynb"{{end}},
+            {{if .inputCid}}/inputs/{{.inputCid}}{{else}}"Kindly provide inputCid like lilypad run github.com/DeCenter-AI/compute.decenter-ai -i inputCid=QmRwvooN7Yfa6Gx8aVcf5cV7MAAMHmo5Q5JTt5234jf3qo"{{end}}
           ],
           "WorkingDirectory": ""
         }
@@ -29,7 +29,8 @@
       },
       "Resources": {
         "CPU": "2",
-        "GPU": "0"
+        "GPU": "1",
+        "MEMORY": "1Gb"
       },
       "Network": {
         "Type": "None"
@@ -38,8 +39,8 @@
       "Inputs": [
         {
           "StorageSource": "urlDownload",
-          "Name": "https://gateway.lighthouse.storage/ipfs/QmRwvooN7Yfa6Gx8aVcf5cV7MAAMHmo5Q5JTt5234jf3qo",
-          "URL": "https://gateway.lighthouse.storage/ipfs/QmRwvooN7Yfa6Gx8aVcf5cV7MAAMHmo5Q5JTt5234jf3qo",
+          "Name": "download Input source",
+          "URL": "https://gateway.lighthouse.storage/ipfs/{{.inputCid}}",
           "Path": "/inputs"
         }
       ],
