@@ -62,7 +62,7 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           repository: .
-          commit_message: "chore: lilypad module v2 on ${date}"
+          commit_message: "chore: lilypad module v2 on ${{env.date}}"
           file_pattern: "lilypad_module.json.tmpl"
           # commit_user_name: Nasfame
           # branch:
