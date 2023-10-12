@@ -44,7 +44,7 @@ jobs:
       - name: Get branch name
         run: |
           echo "The current branch is: ${{ github.ref }}"
-          echo "The current branch is ${{github.base_ref}}"
+          echo "The current branch is ${{GITHUB_REF_NAME}}"
 
       # - name: Commit & Push changes
       #   uses: actions-js/push@master
