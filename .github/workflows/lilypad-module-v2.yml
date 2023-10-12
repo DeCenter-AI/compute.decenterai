@@ -49,6 +49,9 @@ jobs:
         uses: actions-js/push@master
         with:
           github_token: ${{ github.token }}
-          # branch: ${{}}
+          file_pattern: "lilypad_module.json.tmpl"
+          # branch:
           # message: 'chore: autopublish ${date}'
           message: "chore: lilypad module v2 on ${date}"
+          branch: 'main'
+          create_branch: true
