@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 from icecream import ic
 from lighthouseweb3 import Lighthouse
 
-lh = Lighthouse(token="56c91764.0d69cc79074f460c86a9a6d0601a8f65")
+lh = Lighthouse(token="287cd8ac.6202ad1cca9c465a831c30b621ea09a8")
 
 
 @dataclass
@@ -41,10 +41,10 @@ def download(cid: str, path_to_save: str) -> LighthouseFile:
 
 if __name__ == "__main__":
     # TODO: get from environmetn variable
-    lh = Lighthouse(token="56c91764.0d69cc79074f460c86a9a6d0601a8f65")
+    lh = Lighthouse(token="287cd8ac.6202ad1cca9c465a831c30b621ea09a8")
 
     response = lh.upload(
-        "/Users/hiro/Decenter/decenter.streamlit/compute.decenter-ai/samples/sample_v3/sample_v3.zip"
+        "/Users/hiro/Decenter/decenter.streamlit/compute.decenter-ai/samples/sample_v3/sample_v3.zip",
     )
     print(response)
 
