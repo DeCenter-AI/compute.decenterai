@@ -58,11 +58,14 @@ jobs:
       #     branch: 'main'
       #     create_branch: true
 
+      - name: Set date
+        run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
+
       - name: Commit & Push changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           repository: .
-          commit_message: "chore: lilypad module v2 on ${{env.date}}"
+          commit_message: "chore: lilypad module v2 on ${{ env.date }}"
           file_pattern: "lilypad_module.json.tmpl"
           # commit_user_name: Nasfame
           branch: ${{github.ref_name}}
