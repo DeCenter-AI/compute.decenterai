@@ -17,7 +17,8 @@ DATA_DIR = os.getenv("DATA_DIR", "/data")
 JUPYTER_NOTEBOOK: Final[str] = ".ipynb"
 PYTHON: Final[str] = ".py"
 
-output_dir: Final[str] = os.getenv("OUTPUT_DIR", "/outputs")
+output_dir: Final[str] = os.getenv("OUTPUT_DIR", "./outputs")
+OUTPUT_ARCHIVE: Final[str] = os.getenv("OUTPUT_ARCHIVE", None)
 
 EXECUTION_FRAMEWORK: str
 
@@ -140,6 +141,10 @@ def train_v2(
 
     if "decenter" not in output_archive:
         output_archive = "decenter-ai-" + output_archive
+
+    if OUTPUT_ARCHIVE is not None:
+        print("output archive is already specified in env: ", OUTPUT_ARCHIVE)
+        output_archive = OUTPUT_ARCHIVE
 
     if result:
         zipfile_ = archive_directory(

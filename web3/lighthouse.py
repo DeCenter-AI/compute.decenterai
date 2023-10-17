@@ -33,7 +33,7 @@ def download(cid: str, path_to_save: str) -> LighthouseFile:
     with open(path_to_save, "w") as f1:
         res = lh.downloadBlob(f1.buffer, cid)
         ic(f"ligthouse:downloaded {path_to_save}")
-        data = response["data"]
+        data = res["data"]
         upF1 = LighthouseFile(cid, data["Hash"], data["Size"])
         ic(upF1)
         return upF1
