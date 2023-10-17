@@ -47,7 +47,7 @@ COPY --from=builder /app/.venv /app/venv
 
 # COPY samples ${data_dir} Don't do we are zipping the data dir
 
-# RUN . venv/bin/activate
+RUN . venv/bin/activate
 
 
 # ENTRYPOINT ['/app/venv/bin/python main.py',"train_v2"] FIXME: not working
