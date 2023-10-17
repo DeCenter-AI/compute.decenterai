@@ -67,9 +67,10 @@ jobs:
           repository: .
           commit_message: "chore: lilypad module v2 on ${{ env.date }}"
           file_pattern: "lilypad_module.json.tmpl"
-          commit_user_email: ${{github.actor}}
+          # commit_user_email: "laciferin@gmail.com"
+          # commit_user_email: ${{github.event.sender.email}} Try
           commit_user_name: ${{github.actor}}
-          commit_author: ${{github.actor}}
+          commit_author: "Nasfame <laciferin@gmail.com>"
           branch: ${{github.ref_name}}
           create_branch: true
 # https://docs.github.com/en/actions/learn-github-actions/variables
