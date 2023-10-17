@@ -1,57 +1,59 @@
 {
   "machine": {
     "gpu": 1,
-    "cpu": 1,
+    "cpu": 2,
     "ram": 1000
   },
   "job": {
-  "APIVersion": "V1beta2",
-  "Spec": {
-    "EngineSpec": {
-      "Type": "docker",
-      "Params": {
-        "Entrypoint": null,
-        "EnvironmentVariables": [],
-        "Image": "ghcr.io/decenter-ai/compute:v1.5.5",
-        "Parameters": [
-          "headbrain.ipynb",
-          "/inputs/QmRwvooN7Yfa6Gx8aVcf5cV7MAAMHmo5Q5JTt5234jf3qo"
-        ],
-        "WorkingDirectory": ""
+    "APIVersion": "V1beta2",
+    "Spec": {
+      "EngineSpec": {
+        "Type": "docker",
+        "Params": {
+          "Entrypoint": null,
+          "EnvironmentVariables": [],
+          "Image": "ghcr.io/decenter-ai/compute:v1.5.6",
+          "Parameters": [
+            {{if .trainScript}}{{.trainScript}}{{else}}"Kindly provide trainScript like lilypad run github.com/DeCenter-AI/compute.decenter-ai -i trainScript=headbrain.ipynb"{{end}},
+            {{if .inputCid}}/inputs/{{.inputCid}}{{else}}"Kindly provide inputCid like lilypad run github.com/DeCenter-AI/compute.decenter-ai -i inputCid=QmRwvooN7Yfa6Gx8aVcf5cV7MAAMHmo5Q5JTt5234jf3qo"{{end}}
+          ],
+          "WorkingDirectory": ""
+        }
+      },
+      "PublisherSpec": {
+        "Type": "ipfs"
+      },
+      "Docker": {},
+      "Wasm": {
+        "EntryModule": {}
+      },
+      "Resources": {
+        "CPU": "2",
+        "GPU": "1",
+        "MEMORY": "1Gb"
+      },
+      "Network": {
+        "Type": "None"
+      },
+      "Timeout": 5000,
+      "Inputs": [
+        {
+          "StorageSource": "urlDownload",
+          "Name": "inputs",
+          "URL": "https://gateway.lighthouse.storage/ipfs/{{.inputCid}}",
+          "Path": "/inputs"
+        }
+      ],
+      "Outputs": [
+        {
+          "Name": "outputs",
+          "StorageSource": "IPFS",
+          "Path": "/outputs"
+        }
+      ],
+      "Deal": {
+        "Concurrency": 1
       }
-    },
-    "PublisherSpec": {
-      "Type": "ipfs"
-    },
-    "Docker": {},
-    "Wasm": {
-      "EntryModule": {}
-    },
-    "Resources": {
-      "CPU": "2",
-      "GPU": "0"
-    },
-    "Network": {
-      "Type": "None"
-    },
-    "Timeout": 3600,
-    "Inputs": [
-      {
-        "StorageSource": "urlDownload",
-        "Name": "https://gateway.lighthouse.storage/ipfs/QmRwvooN7Yfa6Gx8aVcf5cV7MAAMHmo5Q5JTt5234jf3qo",
-        "URL": "https://gateway.lighthouse.storage/ipfs/QmRwvooN7Yfa6Gx8aVcf5cV7MAAMHmo5Q5JTt5234jf3qo",
-        "Path": "/inputs"
-      }
-    ],
-    "Outputs": [
-      {
-        "Name": "outputs",
-        "Path": "/outputs"
-      }
-    ],
-    "Deal": {
-      "Concurrency": 1
     }
   }
-}
 }

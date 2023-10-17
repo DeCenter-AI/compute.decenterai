@@ -27,6 +27,7 @@ ENV PYTHON_COMMAND=$cmd
 ENV DATA_DIR=$data_dir
 ENV OUTPUT_DIR='/outputs'
 ENV INPUT_DIR='/inputs'
+ENV OUTPUT_ARCHIVE=''
 # remember not spaces b/w =
 # arg doesn't work
 
