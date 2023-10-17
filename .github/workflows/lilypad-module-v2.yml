@@ -67,7 +67,9 @@ jobs:
           repository: .
           commit_message: "chore: lilypad module v2 on ${{ env.date }}"
           file_pattern: "lilypad_module.json.tmpl"
-          # commit_user_name: Nasfame
+          commit_user_email: ${{github.actor}}
+          commit_user_name: ${{github.actor}}
+          commit_author: ${{github.actor}}
           branch: ${{github.ref_name}}
           create_branch: true
 # https://docs.github.com/en/actions/learn-github-actions/variables
