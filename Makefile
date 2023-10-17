@@ -32,7 +32,7 @@ it:
 	docker run -it --entrypoint /bin/bash app
 
 docker:
-	docker built -t app .
+	docker build -t app .
 
 docker-run:
 	docker run app -it -t=headbrain.ipynb -i=/app/samples/kaggle/inputs/headbrain.zip
@@ -45,6 +45,7 @@ docker-build:
 
 docker-clean:
 	docker system prune -f
+
 gh:
 	git pull
 	docker build -t app .

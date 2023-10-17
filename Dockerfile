@@ -47,7 +47,7 @@ COPY --from=builder /app/.venv /app/venv
 
 # COPY samples ${data_dir} Don't do we are zipping the data dir
 
-# RUN . venv/bin/activate
+RUN . venv/bin/activate
 
 
 # ENTRYPOINT ['/app/venv/bin/python main.py',"train_v2"] FIXME: not working
@@ -61,8 +61,7 @@ COPY --from=builder /app/.venv /app/venv
 # HEALTHCHECK ['']
 
 # ENTRYPOINT "/app/venv/bin/python main.py $PYTHON_COMMAND"
-# RUN venv/bin/python -m pip install --upgrade --force-reinstall jupyter
-# FIXME: remove if working
+RUN venv/bin/python -m pip install --upgrade --force-reinstall jupyter
 
 ENTRYPOINT ["/app/venv/bin/python","main.py","train_v2"]
 
