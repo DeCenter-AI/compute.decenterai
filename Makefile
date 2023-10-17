@@ -45,6 +45,7 @@ docker-build:
 
 docker-clean:
 	docker system prune -f
+
 gh:
 	git pull
 	docker build -t app .
