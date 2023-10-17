@@ -59,7 +59,7 @@ jobs:
       #     create_branch: true
 
       - name: Set date
-        run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
+        run: echo "date=$(date + '%H-%M-%S %d-%m-%Y')" >> $GITHUB_ENV
 
       - name: Commit & Push changes
         uses: stefanzweifel/git-auto-commit-action@v5
