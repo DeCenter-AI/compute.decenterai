@@ -1,7 +1,7 @@
 {
   "machine": {
     "gpu": 1,
-    "cpu": 2,
+    "cpu": 1,
     "ram": 1000
   },
   "job": {
@@ -11,14 +11,11 @@
         "Type": "docker",
         "Params": {
           "Entrypoint": null,
-          "EnvironmentVariables": [
-            "OUTPUT_ARCHIVE=decenter-model",
-            "OUTPUT_DIR=/outputs"
-          ],
-          "Image": "ghcr.io/decenter-ai/compute:v1.6.2",
+          "EnvironmentVariables": [],
+          "Image": "ghcr.io/decenter-ai/compute:v1.5.6",
           "Parameters": [
             {{if .trainScript}}{{.trainScript}}{{else}}"Kindly provide trainScript like lilypad run github.com/DeCenter-AI/compute.decenter-ai -i trainScript=headbrain.ipynb"{{end}},
-            {{if .inputCid}}"{{printf "/inputs/%s" .inputCid}}"{{else}}"Kindly provide inputCid like lilypad run github.com/DeCenter-AI/compute.decenter-ai -i inputCid=QmRwvooN7Yfa6Gx8aVcf5cV7MAAMHmo5Q5JTt5234jf3qo"{{end}}
+            {{if .inputCid}}/inputs/{{.inputCid}}{{else}}"Kindly provide inputCid like lilypad run github.com/DeCenter-AI/compute.decenter-ai -i inputCid=QmRwvooN7Yfa6Gx8aVcf5cV7MAAMHmo5Q5JTt5234jf3qo"{{end}}
           ],
           "WorkingDirectory": ""
         }
@@ -38,19 +35,18 @@
       "Network": {
         "Type": "None"
       },
-      "Timeout": 5000,
+      "Timeout": 3600,
       "Inputs": [
         {
           "StorageSource": "urlDownload",
-          "Name": "inputs",
-          "URL": "{{printf "https://gateway.lighthouse.storage/ipfs/\%s .inputCid}}",
+          "Name": "download Input source",
+          "URL": "https://gateway.lighthouse.storage/ipfs/{{.inputCid}}",
           "Path": "/inputs"
         }
       ],
       "Outputs": [
         {
           "Name": "outputs",
-          "StorageSource": "IPFS",
           "Path": "/outputs"
         }
       ],
