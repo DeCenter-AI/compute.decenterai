@@ -60,7 +60,7 @@ jobs:
 
       - name: Set date
         id: commitDate
-        run: echo "commitDate=$(date + '%H-%M-%S:%d-%m-%Y')" >> $GITHUB_ENV
+        run: echo "commitDate=$(date + '%H-%M-%S:%d-%m-%Y')" >> $GITHUB_OUTPUT
 
       - name: Commit & Push changes
         uses: stefanzweifel/git-auto-commit-action@v5
