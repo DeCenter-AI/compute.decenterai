@@ -59,13 +59,14 @@ jobs:
       #     create_branch: true
 
       - name: Set date
+        id: commitDate
         run: echo "commitDate=$(date + '%H-%M-%S %d-%m-%Y')" >> $GITHUB_ENV
 
       - name: Commit & Push changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           repository: .
-          commit_message: "chore: lilypad module v2 on ${{ env.commitDate }}"
+          commit_message: "chore: lilypad module v2 on ${{ steps.commitDate.outputs.commitDate }}"
           file_pattern: "lilypad_module.json.tmpl"
           # commit_user_email: "laciferin@gmail.com"
           # commit_user_email: ${{github.event.sender.email}} Try
