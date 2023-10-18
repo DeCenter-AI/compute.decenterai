@@ -127,9 +127,11 @@ lily_v1_decenter:
 
 lilypad_v2:
 	# lilypad run cowsay:v0.0.1 -i Message="moo"
-	lilypad run github.com/DeCenter-AI/compute.decenter-ai:v1.6.0-alpha
+	# lilypad run github.com/DeCenter-AI/compute.decenter-ai:v1.6.0-alpha
 	# lilypad run github.com/DeCenter-AI/compute.decenter-ai:feat/lilypad-module-v2
-	lilypad run github.com/DeCenter-AI/compute.decenter-ai:v1.7.0-alpha -i trainScript=headbrain.ipynb -i inputCid=Qme1HnwLHVzRxra7mT5gRkG7WbyE4FhnGFn9inETSj33Hw
+	# lilypad run github.com/DeCenter-AI/compute.decenter-ai:7eca4ccf1e01a746447cf62a268a7be6c600514c -i trainScript=headbrain.ipynb -i inputCid=Qme1HnwLHVzRxra7mT5gRkG7WbyE4FhnGFn9inETSj33Hw
+  # commit doesn't work
+	lilypad run github.com/DeCenter-AI/compute.decenter-ai:v1.7.0-beta.2 -i trainScript=headbrain.ipynb -i inputCid=Qme1HnwLHVzRxra7mT5gRkG7WbyE4FhnGFn9inETSj33Hw
 
 	# git tag -a v1.6.0-beta.1 -m "just rolled out lilypad v2 module"
 	# git tag -a v1.6.0-beta.2 -m "just rolled out lilypad v2 module" && git push --tags
