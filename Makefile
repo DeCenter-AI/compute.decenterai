@@ -56,7 +56,11 @@ ghcr:
 	docker run ghcr.io/nasfame/bacalhau-fvm-nft:latest python main.py --p 'Hiro'
 
 
-.PHONY: docker docker-build docker-clean clean gh it run dc test
+.PHONY: docker docker-build docker-clean clean gh ghcr it run dc test
+
+lily:
+	cp lilypad_module.json lilypad_module.json.tmpl
+
 
 sample_b_6:
 # FIXME: doens't work need to override entrypoint as
