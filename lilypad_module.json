@@ -18,7 +18,7 @@
           "Image": "ghcr.io/decenter-ai/compute:v1.6.2",
           "Parameters": [
             {{if .trainScript}}{{.trainScript}}{{else}}"Kindly provide trainScript like lilypad run github.com/DeCenter-AI/compute.decenter-ai -i trainScript=headbrain.ipynb"{{end}},
-            {{if .inputCid}}/inputs/{{.inputCid}}{{else}}"Kindly provide inputCid like lilypad run github.com/DeCenter-AI/compute.decenter-ai -i inputCid=QmRwvooN7Yfa6Gx8aVcf5cV7MAAMHmo5Q5JTt5234jf3qo"{{end}}
+            {{if .inputCid}}"{{printf "/inputs/%s" .inputCid}}"{{else}}"Kindly provide inputCid like lilypad run github.com/DeCenter-AI/compute.decenter-ai -i inputCid=QmRwvooN7Yfa6Gx8aVcf5cV7MAAMHmo5Q5JTt5234jf3qo"{{end}}
           ],
           "WorkingDirectory": ""
         }
@@ -43,7 +43,7 @@
         {
           "StorageSource": "urlDownload",
           "Name": "inputs",
-          "URL": "{{.inputUrl}}",
+          "URL": "{{printf "https://gateway.lighthouse.storage/ipfs/%s" .inputCid}}",
           "Path": "/inputs"
         }
       ],
