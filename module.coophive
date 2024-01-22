@@ -1,0 +1,62 @@
+{
+  "machine": {
+    "gpu": 1,
+    "cpu": 2,
+    "ram": 1000
+  },
+  "job": {
+    "APIVersion": "V1beta2",
+    "Spec": {
+      "EngineSpec": {
+        "Type": "docker",
+        "Params": {
+          "Entrypoint": null,
+          "EnvironmentVariables": [
+            "OUTPUT_ARCHIVE=decenter-model",
+            "OUTPUT_DIR=/outputs"
+          ],
+          "Image": "ghcr.io/decenter-ai/compute:v1.6.2",
+          "Parameters": [
+            {{if .trainScript}}{{.trainScript}}{{else}}"Kindly provide trainScript like hive run github.com/DeCenter-AI/compute.decenter-ai -i trainScript=headbrain.ipynb"{{end}},
+            {{if .inputCid}}"{{printf "/inputs/%s" .inputCid}}"{{else}}"Kindly provide inputCid like hive run github.com/DeCenter-AI/compute.decenter-ai -i inputCid=QmRwvooN7Yfa6Gx8aVcf5cV7MAAMHmo5Q5JTt5234jf3qo"{{end}}
+          ],
+          "WorkingDirectory": ""
+        }
+      },
+      "PublisherSpec": {
+        "Type": "ipfs"
+      },
+      "Docker": {},
+      "Wasm": {
+        "EntryModule": {}
+      },
+      "Resources": {
+        "CPU": "2",
+        "GPU": "1",
+        "MEMORY": "1Gb"
+      },
+      "Network": {
+        "Type": "None"
+      },
+      "Timeout": 5000,
+      "Inputs": [
+        {
+          "StorageSource": "urlDownload",
+          "Name": "inputs",
+          "URL": "{{printf "https://gateway.lighthouse.storage/ipfs/\%s .inputCid}}",
+          "Path": "/inputs"
+        }
+      ],
+      "Outputs": [
+        {
+          "Name": "outputs",
+          "StorageSource": "IPFS",
+          "Path": "/outputs"
+        }
+      ],
+      "Deal": {
+        "Concurrency": 1
+      }
+    }
+  }
+}
